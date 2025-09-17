@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium South African streetwear - Heritage Hoodie from I RUN JHB's exclusive collection">
+    <meta name="keywords" content="Heritage Hoodie, South African streetwear, I RUN JHB, premium hoodie">
+    <meta name="author" content="I RUN JHB">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Heritage Hoodie - I RUN JHB | Premium South African Streetwear</title>
+    <link rel="canonical" href="https://www.irunjhb.com/products/heritage-hoodie">
+    <meta property="og:title" content="Heritage Hoodie - I RUN JHB">
+    <meta property="og:description" content="Premium hoodie celebrating Johannesburg's heritage and urban culture">
+    <meta property="og:image" content="https://www.irunjhb.com/images/heritage-hoodie-main.jpg">
+    <meta property="og:url" content="https://www.irunjhb.com/products/heritage-hoodie">
+    <meta property="og:type" content="product">
+    <link rel="icon" href="assets/logo/logo-gold.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="global-styles.css">
+    <script src="script.js?v=2024" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"
+        integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="></script>
+
+    <style>
+        .product-detail {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .product-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 500px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+        }
+        
+        .thumbnail-images {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .thumbnail.active {
+            border-color: var(--gold-accent);
+        }
+        
+        .product-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-black);
+        }
+        
+        .product-price {
+            font-size: 2rem;
+            color: var(--gold-accent);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-description {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .product-options {
+            margin-bottom: 2rem;
+        }
+        
+        .option-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .option-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .size-options {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .size-option {
+            padding: 0.8rem 1.2rem;
+            border: 2px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .size-option:hover,
+        .size-option.selected {
+            border-color: var(--gold-accent);
+            background: var(--gold-accent);
+            color: white;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .quantity-controls button {
+            padding: 0.8rem 1rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .quantity-controls span {
+            padding: 0.8rem 1.5rem;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-primary {
+            background: var(--gold-accent);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            flex: 1;
+            transition: background 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: var(--hover-gold);
+        }
+        
+        .btn-wishlist {
+            padding: 1rem;
+            border: 2px solid var(--gold-accent);
+            background: white;
+            color: var(--gold-accent);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .product-features {
+            border-top: 1px solid #eee;
+            padding-top: 2rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .feature-list i {
+            color: var(--gold-accent);
+        }
+        
+        @media (max-width: 768px) {
+            .product-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">I RUN JHB</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#collections">Collections</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="index.html#lookbook">Lookbook</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div>
+                <button class="cart-icon" onclick="toggleCart()" aria-label="Open shopping cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="wishlist-icon" onclick="toggleWishlist()" aria-label="Open wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+            </div>
+            <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <main class="product-detail">
+        <nav class="breadcrumb">
+            <a href="index.html">Home</a> > 
+            <a href="shop.html">Shop</a> > 
+            <span>Heritage Hoodie</span>
+        </nav>
+
+        <div class="product-layout">
+            <div class="product-images">
+                <div class="main-image" id="mainImage">
+                    Heritage Hoodie - Main View
+                </div>
+                <div class="thumbnail-images">
+                    <div class="thumbnail active" onclick="changeImage(0)"></div>
+                    <div class="thumbnail" onclick="changeImage(1)"></div>
+                    <div class="thumbnail" onclick="changeImage(2)"></div>
+                    <div class="thumbnail" onclick="changeImage(3)"></div>
+                </div>
+            </div>
+
+            <div class="product-info">
+                <h1>Heritage Hoodie</h1>
+                <div class="product-price">R 899.00</div>
+                
+                <div class="product-description">
+                    <p>Celebrate Johannesburg's rich heritage with this premium hoodie that perfectly blends African tradition with contemporary streetwear. Crafted from premium cotton blend for ultimate comfort and durability.</p>
+                    
+                    <p>Features authentic African-inspired patterns and the iconic I RUN JHB branding. Perfect for the urban explorer who values both style and cultural significance.</p>
+                </div>
+
+                <div class="product-options">
+                    <div class="option-group">
+                        <label>Size</label>
+                        <div class="size-options">
+                            <div class="size-option" onclick="selectSize('S')">S</div>
+                            <div class="size-option selected" onclick="selectSize('M')">M</div>
+                            <div class="size-option" onclick="selectSize('L')">L</div>
+                            <div class="size-option" onclick="selectSize('XL')">XL</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quantity-selector">
+                    <label>Quantity:</label>
+                    <div class="quantity-controls">
+                        <button onclick="decreaseQuantity()">-</button>
+                        <span id="quantity">1</span>
+                        <button onclick="increaseQuantity()">+</button>
+                    </div>
+                </div>
+
+                <div class="product-actions">
+                    <button class="btn-primary" onclick="addToCartFromDetail()">
+                        <i class="fas fa-shopping-bag"></i> Add to Cart
+                    </button>
+                    <button class="btn-wishlist" onclick="addToWishlistFromDetail()">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
+
+                <div class="product-features">
+                    <h3>Product Features</h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Premium cotton blend fabric</li>
+                        <li><i class="fas fa-check"></i> African-inspired design elements</li>
+                        <li><i class="fas fa-check"></i> Comfortable regular fit</li>
+                        <li><i class="fas fa-check"></i> Machine washable</li>
+                        <li><i class="fas fa-check"></i> Ethically manufactured</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>I RUN JHB</h3>
+                    <p>Premium South African streetwear celebrating Johannesburg's hustle culture and African heritage.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#collections">Collections</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="index.html#about">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="size-guide.html">Size Guide</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Customer Care</h3>
+                    <a href="shipping-info.html">Shipping Info</a>
+                    <a href="returns-exchanges.html">Returns & Exchanges</a>
+                    <a href="size-guide.html">Size Guide</a>
+                    <a href="care-instructions.html">Care Instructions</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="track-order.html">Track Your Order</a>
+                </div>
+                
+                <div class="footer-section store-location">
+                    <h3>Visit Our Store</h3>
+                    <p>Oxford Rd, Rosebank<br>
+                    Johannesburg, 2196<br>
+                    South Africa</p>
+                    <p>Phone: 078 561 6050<br>
+                    Email: info@irunjhb.com</p>
+                    
+                    <div class="map-container">
+                        <div class="map-overlay"></div>
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.558078815671!2d28.0436391!3d-26.1459483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950dfa7d35a4ff%3A0xebf028fc57c3f2f!2sI%20RUN%20JHB!5e0!3m2!1sen!2sza!4v1755184870410!5m2!1sen!2sza" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                        <div class="map-info">
+                            <h4>I RUN JHB Store</h4>
+                            <p>Mon-Tue: 8AM-7PM</p>
+                            <p>Wed-Fri: 8AM-7PM</p>
+                            <p>Sat: 9AM-6PM</p>
+                            <p>Sun: 9AM-3:30PM</p>
+                            <a href="https://maps.google.com" class="map-cta" target="_blank">
+                                Get Directions <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with our latest drops and exclusive offers.</p>
+                    <form class="newsletter" id="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 I RUN JHB. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let selectedSize = 'M';
+        let quantity = 1;
+        
+        function selectSize(size) {
+            selectedSize = size;
+            document.querySelectorAll('.size-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.classList.add('selected');
+        }
+        
+        function increaseQuantity() {
+            quantity++;
+            document.getElementById('quantity').textContent = quantity;
+        }
+        
+        function decreaseQuantity() {
+            if (quantity > 1) {
+                quantity--;
+                document.getElementById('quantity').textContent = quantity;
+            }
+        }
+        
+        function changeImage(index) {
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+        
+        function addToCartFromDetail() {
+            const product = {
+                id: 'heritage-hoodie',
+                name: 'Heritage Hoodie',
+                price: 899,
+                size: selectedSize,
+                quantity: quantity,
+                image: 'images/pic1.jpg',
+                category: 'heritage'
+            };
+            
+            if (window.CartManager) {
+                window.CartManager.add(product);
+            }
+        }
+        
+        function addToWishlistFromDetail() {
+            const product = {
+                id: 'heritage-hoodie',
+                name: 'Heritage Hoodie',
+                price: 899,
+                image: 'images/pic1.jpg',
+                category: 'heritage'
+            };
+            
+            if (window.WishlistManager) {
+                window.WishlistManager.toggle(product);
+            }
+        }
+        
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.classList.add('show'), 100);
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

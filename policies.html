@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policies - I RUN JHB | Shipping, Returns & Care</title>
+    <meta name="description" content="I RUN JHB policies: shipping costs, return instructions, product care guidelines, and customer service information.">
+    <link rel="icon" href="assets/logo/logo-gold.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">I RUN JHB</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="lookbook.html">Lookbook</a></li>
+                <li><a href="stockists.html">Stockists</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="search-icon" aria-label="Search products" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="account-icon" aria-label="Account" id="accountBtn">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="cart-icon" aria-label="Open shopping cart" id="cartBtn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="wishlist-icon" aria-label="Open wishlist" id="wishlistBtn">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-hero">
+            <div class="hero-content">
+                <h1>Customer Policies</h1>
+                <p>Shipping, returns, and care information</p>
+            </div>
+        </section>
+
+        <section class="policies-content" style="padding: 4rem 2rem; background: var(--warm-white);">
+            <div class="container">
+                <div class="policies-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+                    
+                    <!-- Shipping Policy -->
+                    <div class="policy-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow);">
+                        <div class="policy-icon" style="width: 60px; height: 60px; background: var(--gold-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-shipping-fast" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <h3 style="font-family: Georgia, serif; color: var(--primary-black); margin-bottom: 1rem;">Shipping Information</h3>
+                        <div style="color: var(--text-gray); line-height: 1.6;">
+                            <p><strong>Free Shipping:</strong> Orders over R500</p>
+                            <p><strong>Standard Delivery:</strong> R50 (3-5 business days)</p>
+                            <p><strong>Express Delivery:</strong> R100 (1-2 business days)</p>
+                            <p><strong>Same-Day (JHB):</strong> R150 (Order before 2PM)</p>
+                            <p><strong>Processing Time:</strong> 1-2 business days</p>
+                        </div>
+                    </div>
+
+                    <!-- Returns Policy -->
+                    <div class="policy-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow);">
+                        <div class="policy-icon" style="width: 60px; height: 60px; background: var(--gold-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-undo" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <h3 style="font-family: Georgia, serif; color: var(--primary-black); margin-bottom: 1rem;">Returns & Exchanges</h3>
+                        <div style="color: var(--text-gray); line-height: 1.6;">
+                            <p><strong>Return Period:</strong> 30 days from delivery</p>
+                            <p><strong>Condition:</strong> Unworn, original tags attached</p>
+                            <p><strong>Return Shipping:</strong> Customer responsibility</p>
+                            <p><strong>Refund Time:</strong> 5-7 business days</p>
+                            <p><strong>Exchanges:</strong> Size/color exchanges available</p>
+                        </div>
+                    </div>
+
+                    <!-- Care Instructions -->
+                    <div class="policy-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow);">
+                        <div class="policy-icon" style="width: 60px; height: 60px; background: var(--gold-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                            <i class="fas fa-heart" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <h3 style="font-family: Georgia, serif; color: var(--primary-black); margin-bottom: 1rem;">Product Care</h3>
+                        <div style="color: var(--text-gray); line-height: 1.6;">
+                            <p><strong>Washing:</strong> Cold water, gentle cycle</p>
+                            <p><strong>Drying:</strong> Air dry, avoid direct sunlight</p>
+                            <p><strong>Ironing:</strong> Low heat, inside out</p>
+                            <p><strong>Storage:</strong> Hang or fold neatly</p>
+                            <p><strong>Special Care:</strong> Check individual labels</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Contact for Policies -->
+                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #f8f8f8; border-radius: 12px;">
+                    <h3 style="font-family: Georgia, serif; margin-bottom: 1rem;">Questions About Our Policies?</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 2rem;">Our customer service team is here to help with any policy questions.</p>
+                    <div class="btn-group">
+                        <a href="contact.html" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i> Contact Us
+                        </a>
+                        <a href="tel:+27785616050" class="btn btn-secondary">
+                            <i class="fas fa-phone"></i> Call Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>I RUN JHB</h3>
+                    <p>Premium South African streetwear celebrating Johannesburg's hustle culture and African heritage.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/IRUNJHB/" target="_blank" rel="noopener" aria-label="Follow us on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/irunjozi/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://x.com/IRUNJHB/" target="_blank" rel="noopener" aria-label="Follow us on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@irunjhb" target="_blank" rel="noopener" aria-label="Follow us on TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <nav>
+                        <a href="index.html">Home</a>
+                        <a href="shop.html">Shop</a>
+                        <a href="about.html">About</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Customer Care</h3>
+                    <nav>
+                        <a href="policies.html">Shipping & Returns</a>
+                        <a href="policies.html">Care Instructions</a>
+                        <a href="contact.html">FAQ</a>
+                    </nav>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with our latest drops and exclusive offers.</p>
+                    <form class="newsletter-form" id="newsletterForm" novalidate>
+                        <input type="email" name="email" placeholder="Enter your email" required autocomplete="email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 I RUN JHB. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+</body>
+</html>

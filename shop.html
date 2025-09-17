@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop premium Johannesburg streetwear. Discover our latest collections featuring African heritage designs and urban style.">
+    <meta name="keywords" content="South African streetwear, Johannesburg fashion, African heritage clothing, premium streetwear, I RUN JHB shop">
+    <meta name="author" content="I RUN JHB">
+    <title>Shop - I RUN JHB | Premium South African Streetwear</title>
+    <link rel="canonical" href="https://www.irunjhb.com/shop">
+    <meta property="og:title" content="Shop - I RUN JHB | Premium South African Streetwear">
+    <meta property="og:description" content="Discover our latest collections featuring African heritage designs and urban style.">
+    <meta property="og:image" content="https://www.irunjhb.com/images/shop-og-image.jpg">
+    <meta property="og:url" content="https://www.irunjhb.com/shop">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="I RUN JHB">
+    <link rel="icon" href="assets/logo/logo-gold.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+
+    <!-- Use Font Awesome CSS CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">I RUN JHB</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="lookbook.html">Lookbook</a></li>
+                <li><a href="stockists.html">Stockists</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="search-icon" aria-label="Search products" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="account-icon" aria-label="Account" id="accountBtn">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="cart-icon" aria-label="Open shopping cart" id="cartBtn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="wishlist-icon" aria-label="Open wishlist" id="wishlistBtn">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="shop-hero">
+            <div class="hero-content">
+                <h1>Shop Premium Streetwear</h1>
+                <p>Discover the latest collections celebrating Johannesburg's hustle culture and African heritage</p>
+            </div>
+        </section>
+
+        <section class="shop-content">
+            <div class="container">
+                <!-- Search and Filter Bar -->
+                <div class="shop-controls">
+                    <div class="search-container">
+                        <label for="searchInput" class="sr-only">Search products</label>
+                        <input type="text" class="search-input" placeholder="Search products..." id="searchInput" autocomplete="off">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    
+                    <div class="filter-controls">
+                        <label for="categoryFilter" class="sr-only">Filter by category</label>
+                        <select class="filter-select" id="categoryFilter">
+                            <option value="all">All Categories</option>
+                            <option value="hustle">Hustle Heritage</option>
+                            <option value="city">City Dreams</option>
+                            <option value="gold">Gold Rush</option>
+                        </select>
+                        
+                        <label for="priceFilter" class="sr-only">Filter by price</label>
+                        <select class="filter-select" id="priceFilter">
+                            <option value="all">All Prices</option>
+                            <option value="0-500">Under R500</option>
+                            <option value="500-1000">R500 - R1000</option>
+                            <option value="1000-1500">R1000 - R1500</option>
+                            <option value="1500+">Over R1500</option>
+                        </select>
+                        
+                        <label for="sortFilter" class="sr-only">Sort products</label>
+                        <select class="filter-select" id="sortFilter">
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="newest">Newest First</option>
+                            <option value="popular">Most Popular</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="products-section">
+                    <div class="products-header">
+                        <h2>All Products</h2>
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="grid" aria-label="Grid view">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button class="view-btn" data-view="list" aria-label="List view">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Products will be loaded here by JavaScript -->
+                    </div>
+                    
+                    <div class="load-more-container">
+                        <button class="load-more-btn" id="loadMoreBtn">Load More Products</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recently Viewed Section -->
+        <section class="recently-viewed" id="recentlyViewed" style="display: none;">
+            <div class="container">
+                <h2>Recently Viewed</h2>
+                <div class="recent-products" id="recentProducts">
+                    <!-- Recently viewed products will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Shopping Cart <span id="cart-count-drawer">(0)</span></h3>
+            <button class="close-cart" aria-label="Close cart" id="closeCartBtn">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <p>Your cart is empty</p>
+                <a href="#" class="continue-shopping" id="continueShoppingCart">Continue Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">R 0.00</span>
+                </div>
+                <div class="total-row">
+                    <span>Shipping:</span>
+                    <span id="cartShipping">R 50.00</span>
+                </div>
+                <div class="total-row total">
+                    <span>Total:</span>
+                    <span id="cartTotal">R 0.00</span>
+                </div>
+            </div>
+            <button class="checkout-btn" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Wishlist Drawer -->
+    <div class="wishlist-drawer" id="wishlistDrawer">
+        <div class="wishlist-header">
+            <h3>Wishlist</h3>
+            <button class="close-wishlist" aria-label="Close wishlist" id="closeWishlistBtn">&times;</button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <div class="wishlist-empty">
+                <p>Your wishlist is empty</p>
+                <a href="shop.html" class="continue-shopping">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>I RUN JHB</h3>
+                    <p>Premium South African streetwear celebrating Johannesburg's hustle culture and African heritage.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/IRUNJHB/" target="_blank" rel="noopener" aria-label="Follow us on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/irunjozi/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://x.com/IRUNJHB/" target="_blank" rel="noopener" aria-label="Follow us on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@irunjhb" target="_blank" rel="noopener" aria-label="Follow us on TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <nav>
+                        <a href="index.html">Home</a>
+                        <a href="shop.html">Shop</a>
+                        <a href="about.html">About</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Customer Care</h3>
+                    <nav>
+                        <a href="#">Shipping Info</a>
+                        <a href="#">Returns & Exchanges</a>
+                        <a href="#">Care Instructions</a>
+                        <a href="#">FAQ</a>
+                    </nav>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with our latest drops and exclusive offers.</p>
+                    <form class="newsletter-form" id="newsletterForm" novalidate>
+                        <input type="email" name="email" placeholder="Enter your email" required autocomplete="email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 I RUN JHB. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+</body>
+</html>

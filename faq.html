@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Frequently asked questions about I RUN JHB. Get answers about orders, shipping, returns, and South African streetwear.">
+    <meta name="keywords" content="I RUN JHB FAQ, frequently asked questions, streetwear help, South African fashion FAQ">
+    <meta name="author" content="I RUN JHB">
+    <title>FAQ - I RUN JHB | Premium South African Streetwear</title>
+    <link rel="canonical" href="https://www.irunjhb.com/faq">
+    <meta property="og:title" content="FAQ - I RUN JHB">
+    <meta property="og:description" content="Get answers to frequently asked questions about I RUN JHB streetwear.">
+    <meta property="og:image" content="https://www.irunjhb.com/images/faq-og-image.jpg">
+    <meta property="og:url" content="https://www.irunjhb.com/faq">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="I RUN JHB">
+    <link rel="icon" href="assets/logo/logo-gold.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="page-styles.css">
+    <script src="script.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/products.js" defer></script>
+    <script src="js/wishlist.js" defer></script>
+    <script src="js/forms.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous" integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="></script>
+    
+    <style>
+        @media (max-width: 768px) {
+            .nav-container {
+                display: grid;
+                grid-template-columns: auto 1fr auto;
+                align-items: center;
+            }
+            .logo {
+                grid-column: 2;
+                justify-self: center;
+                white-space: nowrap;
+                font-size: 1.4rem;
+            }
+            .cart-icon {
+                margin-left: 0;
+                grid-column: 3;
+                justify-self: end;
+            }
+            .menu-toggle {
+                grid-column: 1;
+                justify-self: start;
+            }
+            .nav-links {
+                grid-column: 1 / -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">I RUN JHB</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="lookbook.html">Lookbook</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="cart-icon" onclick="toggleCart()" aria-label="Open shopping cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="wishlist-icon" onclick="toggleWishlist()" aria-label="Open wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+            </div>
+            <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <main class="faq-page">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+
+            <section class="faq-section">
+                <h2>Orders & Payment</h2>
+                
+                <div class="faq-item">
+                    <h3>What payment methods do you accept?</h3>
+                    <p>We accept major credit cards (Visa, Mastercard, American Express), PayFast for instant EFT, and cash on delivery for select areas.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do I track my order?</h3>
+                    <p>Once your order ships, you'll receive an email with tracking information. You can also track your order on our <a href="track-order.html">Track Your Order</a> page.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can I modify or cancel my order?</h3>
+                    <p>Orders can be modified or cancelled within 1 hour of placement. Contact us immediately at +27 11 123 4567 or orders@irunjhb.com.</p>
+                </div>
+            </section>
+
+            <section class="faq-section">
+                <h2>Shipping & Delivery</h2>
+                
+                <div class="faq-item">
+                    <h3>How long does shipping take?</h3>
+                    <p>Standard shipping takes 3-5 business days, express shipping takes 1-2 business days. Free shipping is available on orders over R500.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Do you ship nationwide?</h3>
+                    <p>Yes, we ship to all provinces in South Africa. Delivery times may vary for remote areas.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What if I'm not home for delivery?</h3>
+                    <p>The courier will leave a delivery card. You can arrange redelivery or collect from the nearest depot within 7 days.</p>
+                </div>
+            </section>
+
+            <section class="faq-section">
+                <h2>Returns & Exchanges</h2>
+                
+                <div class="faq-item">
+                    <h3>What is your return policy?</h3>
+                    <p>We offer a 30-day return policy. Items must be unworn, with original tags, and in original packaging. See our <a href="returns-exchanges.html">Returns & Exchanges</a> page for details.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do I exchange for a different size?</h3>
+                    <p>Contact our returns team at returns@irunjhb.com with your order number. We'll guide you through the exchange process.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Who pays for return shipping?</h3>
+                    <p>Customers pay return shipping costs unless the item is defective or we made an error.</p>
+                </div>
+            </section>
+
+            <section class="faq-section">
+                <h2>Sizing & Fit</h2>
+                
+                <div class="faq-item">
+                    <h3>How do I find my size?</h3>
+                    <p>Use our size guide available on each product page. Measure yourself and compare to our size chart for the best fit.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Do your items run true to size?</h3>
+                    <p>Our items generally run true to size. Check individual product descriptions for specific fit notes.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>What if the size doesn't fit?</h3>
+                    <p>You can exchange for a different size within 30 days, subject to availability. See our exchange policy for details.</p>
+                </div>
+            </section>
+
+            <section class="faq-section">
+                <h2>Products & Care</h2>
+                
+                <div class="faq-item">
+                    <h3>How should I care for my I RUN JHB items?</h3>
+                    <p>Follow the care instructions on each garment's label. Visit our <a href="care-instructions.html">Care Instructions</a> page for detailed guidelines.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Are your products ethically made?</h3>
+                    <p>Yes, we work with suppliers who meet our ethical standards for fair labor practices and sustainable production.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>When will out-of-stock items be available?</h3>
+                    <p>Restock dates vary by item. Sign up for notifications on product pages to be alerted when items are back in stock.</p>
+                </div>
+            </section>
+
+            <section class="faq-section">
+                <h2>Account & Website</h2>
+                
+                <div class="faq-item">
+                    <h3>Do I need an account to place an order?</h3>
+                    <p>No, you can checkout as a guest. However, creating an account allows you to track orders and save preferences.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do I reset my password?</h3>
+                    <p>Click "Forgot Password" on the login page and follow the instructions sent to your email.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Is my personal information secure?</h3>
+                    <p>Yes, we use industry-standard security measures to protect your information. Read our <a href="privacy-policy.html">Privacy Policy</a> for details.</p>
+                </div>
+            </section>
+
+            <section class="contact-section">
+                <h2>Still Have Questions?</h2>
+                <p>Contact our customer service team:</p>
+                <p>Email: support@irunjhb.com<br>
+                Phone: +27 11 123 4567<br>
+                Hours: Monday-Friday 9AM-6PM, Saturday 9AM-2PM</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer footer-premium">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>I RUN JHB</h3>
+                    <p>Premium South African streetwear celebrating Johannesburg's hustle culture and African heritage.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#collections">Collections</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="size-guide.html">Size Guide</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Customer Care</h3>
+                    <a href="shipping-info.html">Shipping Info</a>
+                    <a href="returns-exchanges.html">Returns & Exchanges</a>
+                    <a href="size-guide.html">Size Guide</a>
+                    <a href="care-instructions.html">Care Instructions</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="track-order.html">Track Your Order</a>
+                </div>
+                
+                <div class="footer-section store-location">
+                    <h3>Visit Our Store</h3>
+                    <p>Oxford Rd, Rosebank<br>
+                    Johannesburg, 2196<br>
+                    South Africa</p>
+                    <p>Phone: 078 561 6050<br>
+                    Email: info@irunjhb.com</p>
+                    
+                    <div class="map-container">
+                        <div class="map-overlay"></div>
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.558078815671!2d28.0436391!3d-26.1459483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950dfa7d35a4ff%3A0xebf028fc57c3f2f!2sI%20RUN%20JHB!5e0!3m2!1sen!2sza!4v1755184870410!5m2!1sen!2sza" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                        <div class="map-info">
+                            <h4>I RUN JHB Store</h4>
+                            <p>Mon-Tue: 8AM-7PM</p>
+                            <p>Wed-Fri: 8AM-7PM</p>
+                            <p>Sat: 9AM-6PM</p>
+                            <p>Sun: 9AM-3:30PM</p>
+                            <a href="https://maps.google.com" class="map-cta" target="_blank">
+                                Get Directions <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with our latest drops and exclusive offers.</p>
+                    <form class="newsletter" id="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 I RUN JHB. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.faq-item h3').forEach(question => {
+                question.style.cursor = 'pointer';
+                question.addEventListener('click', () => {
+                    const item = question.parentElement;
+                    const answer = item.querySelector('p');
+                    
+                    // Close all other items
+                    document.querySelectorAll('.faq-item').forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('p').style.display = 'none';
+                        }
+                    });
+                    
+                    // Toggle current item
+                    if (item.classList.contains('active')) {
+                        item.classList.remove('active');
+                        answer.style.display = 'none';
+                    } else {
+                        item.classList.add('active');
+                        answer.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Shopping Cart <span id="cart-count-drawer">(0)</span></h3>
+            <button class="close-cart" onclick="toggleCart()" aria-label="Close cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <p>Your cart is empty</p>
+                <a href="shop.html" class="continue-shopping" onclick="toggleCart()">Continue Shopping</a>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">R 0.00</span>
+                </div>
+                <div class="total-row">
+                    <span>Shipping:</span>
+                    <span id="cartShipping">R 50.00</span>
+                </div>
+                <div class="total-row total">
+                    <span>Total:</span>
+                    <span id="cartTotal">R 0.00</span>
+                </div>
+            </div>
+            <button class="checkout-btn" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Wishlist Drawer -->
+    <div class="wishlist-drawer" id="wishlistDrawer">
+        <div class="wishlist-header">
+            <h3>Wishlist <span id="wishlist-count-drawer">(0)</span></h3>
+            <button class="close-cart" onclick="toggleWishlist()" aria-label="Close wishlist">&times;</button>
+        </div>
+        <div class="cart-items" id="wishlistItems">
+            <div class="wishlist-empty">
+                <p>Your wishlist is empty</p>
+                <a href="shop.html" class="continue-shopping" onclick="toggleWishlist()">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="closeAllModals()"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            updateWishlistCount();
+        });
+
+        function toggleCart() {
+            const cartDrawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('overlay');
+            
+            if (cartDrawer.classList.contains('open')) {
+                cartDrawer.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            } else {
+                cartDrawer.classList.add('open');
+                overlay.classList.add('active');
+                document.body.classList.add('no-scroll');
+                updateCartDisplay();
+            }
+        }
+
+        function toggleWishlist() {
+            const wishlistDrawer = document.getElementById('wishlistDrawer');
+            const overlay = document.getElementById('overlay');
+            
+            if (wishlistDrawer.classList.contains('open')) {
+                wishlistDrawer.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            } else {
+                wishlistDrawer.classList.add('open');
+                overlay.classList.add('active');
+                document.body.classList.add('no-scroll');
+                updateWishlistDisplay();
+            }
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            const cartCountElements = document.querySelectorAll('#cartCount, .cart-count');
+            cartCountElements.forEach(element => {
+                element.textContent = count;
+            });
+            
+            const cartCountDrawer = document.getElementById('cart-count-drawer');
+            if (cartCountDrawer) {
+                cartCountDrawer.textContent = `(${count})`;
+            }
+        }
+
+        function updateWishlistCount() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const count = wishlist.length;
+            
+            const wishlistCountElements = document.querySelectorAll('#wishlistCount, .wishlist-count');
+            wishlistCountElements.forEach(element => {
+                element.textContent = count;
+            });
+            
+            const wishlistCountDrawer = document.getElementById('wishlist-count-drawer');
+            if (wishlistCountDrawer) {
+                wishlistCountDrawer.textContent = `(${count})`;
+            }
+        }
+
+        function updateCartDisplay() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItems = document.getElementById('cartItems');
+            const cartFooter = document.getElementById('cartFooter');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="cart-empty">
+                        <p>Your cart is empty</p>
+                        <a href="shop.html" class="continue-shopping" onclick="toggleCart()">Continue Shopping</a>
+                    </div>
+                `;
+                cartFooter.style.display = 'none';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p>Size: ${item.size}</p>
+                            <p class="cart-item-price">R ${item.price}</p>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button onclick="decreaseCartQuantity('${item.id}', '${item.size}')">-</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="increaseCartQuantity('${item.id}', '${item.size}')">+</button>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart('${item.id}', '${item.size}')">&times;</button>
+                    </div>
+                `).join('');
+                
+                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const shipping = subtotal > 500 ? 0 : 50;
+                const total = subtotal + shipping;
+                
+                document.getElementById('cartSubtotal').textContent = `R ${subtotal.toFixed(2)}`;
+                document.getElementById('cartShipping').textContent = shipping === 0 ? 'FREE' : `R ${shipping.toFixed(2)}`;
+                document.getElementById('cartTotal').textContent = `R ${total.toFixed(2)}`;
+                
+                cartFooter.style.display = 'block';
+            }
+            
+            updateCartCount();
+        }
+
+        function updateWishlistDisplay() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const wishlistItems = document.getElementById('wishlistItems');
+            
+            if (wishlist.length === 0) {
+                wishlistItems.innerHTML = `
+                    <div class="wishlist-empty">
+                        <p>Your wishlist is empty</p>
+                        <a href="shop.html" class="continue-shopping" onclick="toggleWishlist()">Continue Shopping</a>
+                    </div>
+                `;
+            } else {
+                wishlistItems.innerHTML = wishlist.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p class="cart-item-price">R ${item.price}</p>
+                        </div>
+                        <button class="remove-item" onclick="removeFromWishlist('${item.id}')">&times;</button>
+                    </div>
+                `).join('');
+            }
+            
+            updateWishlistCount();
+        }
+
+        function increaseCartQuantity(itemId, size) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const item = cart.find(item => item.id === itemId && item.size === size);
+            if (item) {
+                item.quantity += 1;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+            }
+        }
+
+        function decreaseCartQuantity(itemId, size) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const item = cart.find(item => item.id === itemId && item.size === size);
+            if (item && item.quantity > 1) {
+                item.quantity -= 1;
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+            }
+        }
+
+        function removeFromCart(itemId, size) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const updatedCart = cart.filter(item => !(item.id === itemId && item.size === size));
+            localStorage.setItem('cart', JSON.stringify(updatedCart));
+            updateCartDisplay();
+        }
+
+        function removeFromWishlist(itemId) {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const updatedWishlist = wishlist.filter(item => item.id !== itemId);
+            localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+            updateWishlistDisplay();
+        }
+
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const overlay = document.getElementById('overlay');
+            
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        }
+
+        function closeAllModals() {
+            const modals = document.querySelectorAll('.cart-drawer, .wishlist-drawer');
+            const overlay = document.getElementById('overlay');
+            
+            modals.forEach(modal => {
+                modal.classList.remove('open');
+            });
+            
+            overlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+    </script>
+</body>
+</html>

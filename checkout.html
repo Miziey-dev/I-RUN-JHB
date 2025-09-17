@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete your purchase of premium Johannesburg streetwear. Secure checkout for I RUN JHB's African heritage streetwear collection.">
+    <meta name="keywords" content="I RUN JHB checkout, South African streetwear purchase, Johannesburg fashion checkout, secure payment">
+    <meta name="author" content="I RUN JHB">
+    <title>Secure Checkout - I RUN JHB | Premium South African Streetwear</title>
+    <link rel="canonical" href="https://www.irunjhb.com/checkout">
+    <meta property="og:title" content="Secure Checkout - I RUN JHB">
+    <meta property="og:description" content="Complete your purchase of premium Johannesburg streetwear with our secure checkout process.">
+    <meta property="og:image" content="https://www.irunjhb.com/images/checkout-og-image.jpg">
+    <meta property="og:url" content="https://www.irunjhb.com/checkout">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="I RUN JHB">
+    <link rel="icon" href="assets/logo/logo-gold.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="global-styles.css">
+    <script src="script.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/products.js" defer></script>
+    <script src="js/wishlist.js" defer></script>
+    <script src="js/forms.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"
+        integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="></script>
+    
+    <style>
+        @media (max-width: 768px) {
+            .nav-container {
+                display: grid;
+                grid-template-columns: auto 1fr auto;
+                align-items: center;
+            }
+
+            .logo {
+                grid-column: 2;
+                justify-self: center;
+                white-space: nowrap;
+                font-size: 1.4rem;
+            }
+
+            .cart-icon {
+                margin-left: 0;
+                grid-column: 3;
+                justify-self: end;
+            }
+
+            .menu-toggle {
+                grid-column: 1;
+                justify-self: start;
+            }
+
+            .nav-links {
+                grid-column: 1 / -1;
+            }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Secure Checkout - I RUN JHB",
+      "url": "https://www.irunjhb.com/checkout",
+      "description": "Complete your purchase of premium Johannesburg streetwear with our secure checkout process.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "I RUN JHB",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.irunjhb.com/images/logo.png"
+        }
+      }
+    }
+    </script>
+
+    <script>
+        window.PAYFAST_CONFIG = {
+            merchant_id: 'YOUR_MERCHANT_ID',
+            merchant_key: 'YOUR_MERCHANT_KEY',
+            sandbox: true,
+            return_url: window.location.origin + '/success.html',
+            cancel_url: window.location.href,
+            notify_url: (window.API_BASE || '') + '/api/payfast/ipn'
+        };
+    </script>
+    
+    <style>
+        /* Checkout page specific styles */
+        .checkout-hero {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(212, 175, 55, 0.1));
+            background-size: cover;
+            background-position: center;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .checkout-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3));
+            z-index: 0;
+        }
+
+        .checkout-hero .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            padding: 2rem;
+        }
+
+        .checkout-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .checkout-content {
+            padding: 3rem 2rem;
+        }
+
+        .checkout-layout {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .checkout-steps {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .step.active,
+        .step.completed {
+            opacity: 1;
+        }
+
+        .step-circle {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-circle {
+            border-color: var(--gold-accent);
+            background: var(--gold-accent);
+            color: white;
+        }
+
+        .step.completed .step-circle {
+            border-color: #10b981;
+            background: #10b981;
+            color: white;
+        }
+
+        .step-line {
+            width: 100px;
+            height: 2px;
+            background: #ddd;
+            margin: 0 1rem;
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-step h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--primary-black);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-black);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e1e1;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold-accent);
+        }
+
+        .form-group input.error {
+            border-color: #e74c3c;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .shipping-options {
+            margin: 2rem 0;
+        }
+
+        .shipping-options h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-black);
+        }
+
+        .shipping-method {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .shipping-option {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .shipping-option:hover {
+            border-color: var(--gold-accent);
+        }
+
+        .shipping-option input[type="radio"] {
+            margin-right: 1rem;
+        }
+
+        .option-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .option-name {
+            font-weight: 600;
+            display: block;
+        }
+
+        .option-desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .option-price {
+            font-weight: 600;
+            color: var(--gold-accent);
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-option:hover {
+            border-color: var(--gold-accent);
+        }
+
+        .payment-option input[type="radio"] {
+            margin-right: 1rem;
+        }
+
+        .payment-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .payment-content i {
+            font-size: 1.5rem;
+            color: var(--gold-accent);
+        }
+
+        .payment-content span {
+            font-weight: 600;
+            flex: 1;
+        }
+
+        .payment-content small {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+        }
+
+        .card-icons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .card-icons i {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .payment-details {
+            margin-bottom: 2rem;
+        }
+
+        .payment-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .payment-info i {
+            color: var(--gold-accent);
+            margin-top: 0.2rem;
+        }
+
+        .step-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--gold-accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--hover-gold);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-black);
+            border: 2px solid var(--primary-black);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-black);
+            color: white;
+        }
+
+        .btn-large {
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+        }
+
+        .review-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .review-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-black);
+        }
+
+        .edit-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--gold-accent);
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .review-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .review-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+        }
+
+        .review-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .review-item-details {
+            flex: 1;
+        }
+
+        .review-item-details h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        .review-item-details p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .review-item-price {
+            font-weight: 600;
+            color: var(--gold-accent) !important;
+        }
+
+        .terms-section {
+            margin: 2rem 0;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            margin-top: 0.2rem;
+        }
+
+        .order-summary {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .order-summary h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-black);
+        }
+
+        .summary-items {
+            margin-bottom: 2rem;
+        }
+
+        .summary-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .summary-item-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .summary-item-details {
+            flex: 1;
+        }
+
+        .summary-item-details h4 {
+            margin: 0 0 0.25rem 0;
+            font-size: 0.9rem;
+        }
+
+        .summary-item-details p {
+            margin: 0;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        .summary-item-price {
+            font-weight: 600;
+            color: var(--gold-accent);
+            font-size: 0.9rem;
+        }
+
+        .summary-calculations {
+            border-top: 1px solid #e1e1e1;
+            padding-top: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .summary-row.total {
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #ddd;
+            margin-top: 1rem;
+        }
+
+        .promo-code {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .promo-code input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .promo-code button {
+            padding: 0.8rem 1rem;
+            background: var(--primary-black);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .checkout-notices {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .notice {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        .notice i {
+            color: var(--gold-accent);
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                display: grid;
+                grid-template-columns: auto 1fr auto;
+                align-items: center;
+            }
+
+            .logo {
+                grid-column: 2;
+                justify-self: center;
+                white-space: nowrap;
+                font-size: 1.4rem;
+            }
+
+            .cart-icon {
+                margin-left: 0;
+                grid-column: 3;
+                justify-self: end;
+            }
+
+            .menu-toggle {
+                grid-column: 1;
+                justify-self: start;
+            }
+
+            .nav-links {
+                grid-column: 1 / -1;
+            }
+
+            .checkout-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .checkout-steps {
+                padding: 1rem 0;
+            }
+
+            .step-line {
+                width: 50px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step-actions {
+                flex-direction: column;
+            }
+
+            .security-badges {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .order-summary {
+                position: static;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">I RUN JHB</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="lookbook.html">Lookbook</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="cart-icon" onclick="toggleCart()" aria-label="Open shopping cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="wishlist-icon" onclick="toggleWishlist()" aria-label="Open wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+            </div>
+            <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+
+    <main>
+        <section class="checkout-hero">
+            <div class="hero-content">
+                <h1>Secure Checkout</h1>
+                <p>Complete your purchase of premium Johannesburg streetwear</p>
+                <div class="security-badges">
+                    <div class="security-badge">
+                        <i class="fas fa-lock"></i>
+                        <span>SSL Secured</span>
+                    </div>
+                    <div class="security-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Safe & Secure</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="checkout-content">
+            <div class="container">
+                <div class="checkout-layout">
+                    <!-- Main Checkout Form -->
+                    <div class="checkout-main">
+                        <div class="checkout-steps">
+                            <div class="step active" data-step="1">
+                                <div class="step-circle">
+                                    <span class="step-number">1</span>
+                                    <i class="fas fa-check step-check" style="display: none;"></i>
+                                </div>
+                                <span class="step-label">Shipping</span>
+                            </div>
+                            <div class="step-line"></div>
+                            <div class="step" data-step="2">
+                                <div class="step-circle">
+                                    <span class="step-number">2</span>
+                                    <i class="fas fa-check step-check" style="display: none;"></i>
+                                </div>
+                                <span class="step-label">Payment</span>
+                            </div>
+                            <div class="step-line"></div>
+                            <div class="step" data-step="3">
+                                <div class="step-circle">
+                                    <span class="step-number">3</span>
+                                    <i class="fas fa-check step-check" style="display: none;"></i>
+                                </div>
+                                <span class="step-label">Review</span>
+                            </div>
+                        </div>
+
+                        <form id="checkout-form" class="checkout-form">
+                            <!-- Step 1: Shipping Information -->
+                            <div class="form-step active" data-step="1">
+                                <h2><i class="fas fa-shipping-fast"></i> Shipping Information</h2>
+                                
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="email">Email Address *</label>
+                                        <input type="email" id="email" name="email" required>
+                                        <span class="error-message" id="email-error"></span>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number *</label>
+                                        <input type="tel" id="phone" name="phone" required>
+                                        <span class="error-message" id="phone-error"></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name *</label>
+                                        <input type="text" id="firstName" name="firstName" required>
+                                        <span class="error-message" id="firstName-error"></span>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name *</label>
+                                        <input type="text" id="lastName" name="lastName" required>
+                                        <span class="error-message" id="lastName-error"></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="address">Street Address *</label>
+                                    <input type="text" id="address" name="address" required>
+                                    <span class="error-message" id="address-error"></span>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="address2">Apartment, suite, etc. (optional)</label>
+                                    <input type="text" id="address2" name="address2">
+                                </div>
+                                
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="city">City *</label>
+                                        <input type="text" id="city" name="city" required>
+                                        <span class="error-message" id="city-error"></span>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="province">Province *</label>
+                                        <select id="province" name="province" required>
+                                            <option value="">Select Province</option>
+                                            <option value="GP">Gauteng</option>
+                                            <option value="WC">Western Cape</option>
+                                            <option value="KZN">KwaZulu-Natal</option>
+                                            <option value="EC">Eastern Cape</option>
+                                            <option value="FS">Free State</option>
+                                            <option value="LP">Limpopo</option>
+                                            <option value="MP">Mpumalanga</option>
+                                            <option value="NC">Northern Cape</option>
+                                            <option value="NW">North West</option>
+                                        </select>
+                                        <span class="error-message" id="province-error"></span>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="postalCode">Postal Code *</label>
+                                        <input type="text" id="postalCode" name="postalCode" required>
+                                        <span class="error-message" id="postalCode-error"></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="shipping-options">
+                                    <h3>Shipping Method</h3>
+                                    <div class="shipping-method">
+                                        <label class="shipping-option">
+                                            <input type="radio" name="shipping" value="standard" checked>
+                                            <div class="option-content">
+                                                <div class="option-info">
+                                                    <span class="option-name">Standard Shipping</span>
+                                                    <span class="option-desc">3-5 business days</span>
+                                                </div>
+                                                <span class="option-price">R 50.00</span>
+                                            </div>
+                                        </label>
+                                        
+                                        <label class="shipping-option">
+                                            <input type="radio" name="shipping" value="express">
+                                            <div class="option-content">
+                                                <div class="option-info">
+                                                    <span class="option-name">Express Shipping</span>
+                                                    <span class="option-desc">1-2 business days</span>
+                                                </div>
+                                                <span class="option-price">R 120.00</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-actions">
+                                    <button type="button" class="btn btn-primary" onclick="nextStep()">Continue to Payment</button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Payment Information -->
+                            <div class="form-step" data-step="2">
+                                <h2><i class="fas fa-credit-card"></i> Payment Information</h2>
+                                
+                                <div class="payment-methods">
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment" value="card" checked>
+                                        <div class="payment-content">
+                                            <i class="fas fa-credit-card"></i>
+                                            <span>Credit/Debit Card</span>
+                                            <div class="card-icons">
+                                                <i class="fab fa-cc-visa"></i>
+                                                <i class="fab fa-cc-mastercard"></i>
+                                                <i class="fab fa-cc-amex"></i>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment" value="payfast">
+                                        <div class="payment-content">
+                                            <i class="fas fa-university"></i>
+                                            <span>PayFast (Instant EFT)</span>
+                                            <small>Secure South African payment gateway</small>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment" value="yoco">
+                                        <div class="payment-content">
+                                            <i class="fas fa-mobile-alt"></i>
+                                            <span>Yoco (Card Payment)</span>
+                                            <small>Secure card payments for South Africa</small>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment" value="cod">
+                                        <div class="payment-content">
+                                            <i class="fas fa-money-bill-wave"></i>
+                                            <span>Cash on Delivery</span>
+                                            <small>Pay when you receive your order</small>
+                                        </div>
+                                    </label>
+                                </div>
+
+                                <div id="card-details" class="payment-details">
+                                    <div class="form-group">
+                                        <label for="cardNumber">Card Number *</label>
+                                        <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                                        <span class="error-message" id="cardNumber-error"></span>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="cardName">Name on Card *</label>
+                                        <input type="text" id="cardName" name="cardName">
+                                        <span class="error-message" id="cardName-error"></span>
+                                    </div>
+                                    
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label for="expiry">Expiry Date *</label>
+                                            <input type="text" id="expiry" name="expiry" placeholder="MM/YY" maxlength="5">
+                                            <span class="error-message" id="expiry-error"></span>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="cvv">CVV *</label>
+                                            <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4">
+                                            <span class="error-message" id="cvv-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="payfast-details" class="payment-details" style="display: none;">
+                                    <div class="payment-info">
+                                        <i class="fas fa-info-circle"></i>
+                                        <p>You will be redirected to PayFast to complete your payment securely using your preferred South African bank.</p>
+                                    </div>
+                                </div>
+                                
+                                <div id="yoco-details" class="payment-details" style="display: none;">
+                                    <div class="payment-info">
+                                        <i class="fas fa-info-circle"></i>
+                                        <p>Secure card payment processing for South African customers. All major cards accepted.</p>
+                                    </div>
+                                </div>
+                                
+                                <div id="cod-details" class="payment-details" style="display: none;">
+                                    <div class="payment-info">
+                                        <i class="fas fa-info-circle"></i>
+                                        <p>Pay with cash when your order is delivered. A small handling fee of R25 applies.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-actions">
+                                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Back to Shipping</button>
+                                    <button type="button" class="btn btn-primary" onclick="nextStep()">Review Order</button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Order Review -->
+                            <div class="form-step" data-step="3">
+                                <h2><i class="fas fa-clipboard-check"></i> Review Your Order</h2>
+                                
+                                <div class="review-section">
+                                    <h3>Shipping Address</h3>
+                                    <div class="review-content" id="review-shipping">
+                                        <!-- Shipping details will be populated here -->
+                                    </div>
+                                    <button type="button" class="edit-btn" onclick="goToStep(1)">Edit</button>
+                                </div>
+                                
+                                <div class="review-section">
+                                    <h3>Payment Method</h3>
+                                    <div class="review-content" id="review-payment">
+                                        <!-- Payment details will be populated here -->
+                                    </div>
+                                    <button type="button" class="edit-btn" onclick="goToStep(2)">Edit</button>
+                                </div>
+                                
+                                <div class="review-section">
+                                    <h3>Order Items</h3>
+                                    <div class="review-items" id="review-items">
+                                        <!-- Order items will be populated here -->
+                                    </div>
+                                </div>
+                                
+                                <div class="terms-section">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="terms" name="terms" required>
+                                        <span class="checkmark"></span>
+                                        I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a>
+                                    </label>
+                                </div>
+                                
+                                <div class="step-actions">
+                                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Back to Payment</button>
+                                    <button type="submit" class="btn btn-primary btn-large" id="place-order-btn">
+                                        <i class="fas fa-lock"></i>
+                                        Place Order
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Order Summary Sidebar -->
+                    <div class="order-summary">
+                        <h2>Order Summary</h2>
+                        
+                        <div class="summary-items" id="checkout-items">
+                            <!-- Order items will be populated here -->
+                        </div>
+                        
+                        <div class="summary-calculations">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="subtotal">R 0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <span id="shipping-cost">R 50.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Tax (VAT 15%)</span>
+                                <span id="tax">R 0.00</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span id="total">R 0.00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="promo-code">
+                            <input type="text" id="promoCode" placeholder="Enter promo code">
+                            <button type="button" onclick="applyPromoCode()">Apply</button>
+                        </div>
+                        
+                        <div class="checkout-notices">
+                            <div class="notice">
+                                <i class="fas fa-truck"></i>
+                                <span>Free shipping on orders over R500</span>
+                            </div>
+                            <div class="notice">
+                                <i class="fas fa-undo"></i>
+                                <span>30-day return policy</span>
+                            </div>
+                            <div class="notice">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Secure checkout guaranteed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>I RUN JHB</h3>
+                    <p>Premium South African streetwear celebrating Johannesburg's hustle culture and African heritage.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#collections">Collections</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="index.html#about">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="size-guide.html">Size Guide</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Customer Care</h3>
+                    <a href="shipping-info.html">Shipping Info</a>
+                    <a href="returns-exchanges.html">Returns & Exchanges</a>
+                    <a href="size-guide.html">Size Guide</a>
+                    <a href="care-instructions.html">Care Instructions</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="track-order.html">Track Your Order</a>
+                </div>
+                
+                <div class="footer-section store-location">
+                    <h3>Visit Our Store</h3>
+                    <p>Oxford Rd, Rosebank<br>
+                    Johannesburg, 2196<br>
+                    South Africa</p>
+                    <p>Phone: 078 561 6050<br>
+                    Email: info@irunjhb.com</p>
+                    
+                    <div class="map-container">
+                        <div class="map-overlay"></div>
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.558078815671!2d28.0436391!3d-26.1459483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950dfa7d35a4ff%3A0xebf028fc57c3f2f!2sI%20RUN%20JHB!5e0!3m2!1sen!2sza!4v1755184870410!5m2!1sen!2sza" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                        <div class="map-info">
+                            <h4>I RUN JHB Store</h4>
+                            <p>Mon-Tue: 8AM-7PM</p>
+                            <p>Wed-Fri: 8AM-7PM</p>
+                            <p>Sat: 9AM-6PM</p>
+                            <p>Sun: 9AM-3:30PM</p>
+                            <a href="https://maps.google.com" class="map-cta" target="_blank">
+                                Get Directions <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with our latest drops and exclusive offers.</p>
+                    <form class="newsletter" id="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 I RUN JHB. All rights reserved. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Enhanced checkout functionality
+        let currentStep = 1;
+        const totalSteps = 3;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCheckout();
+            setupFormValidation();
+            setupPaymentMethods();
+            loadOrderSummary();
+        });
+        
+        function initializeCheckout() {
+            // Check if cart has items - allow checkout page to load even with empty cart for testing
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            // Commented out redirect to allow viewing checkout page
+            // if (cart.length === 0) {
+            //     window.location.href = 'shop.html';
+            //     return;
+            // }
+            
+            // Setup step navigation
+            updateStepDisplay();
+            
+            // Setup form field formatting
+            setupFieldFormatting();
+        }
+        
+        function setupFieldFormatting() {
+            // Format card number
+            const cardNumber = document.getElementById('cardNumber');
+            if (cardNumber) {
+                cardNumber.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+                    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                    e.target.value = formattedValue;
+                });
+            }
+            
+            // Format expiry date
+            const expiry = document.getElementById('expiry');
+            if (expiry) {
+                expiry.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 2) {
+                        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    }
+                    e.target.value = value;
+                });
+            }
+            
+            // Format phone number
+            const phone = document.getElementById('phone');
+            if (phone) {
+                phone.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 0) {
+                        if (value.startsWith('27')) {
+                            value = '+' + value;
+                        } else if (value.startsWith('0')) {
+                            value = '+27' + value.substring(1);
+                        } else {
+                            value = '+27' + value;
+                        }
+                    }
+                    e.target.value = value;
+                });
+            }
+        }
+        
+        function setupPaymentMethods() {
+            const paymentMethods = document.querySelectorAll('input[name="payment"]');
+            paymentMethods.forEach(method => {
+                method.addEventListener('change', function() {
+                    showPaymentDetails(this.value);
+                    updateOrderSummary();
+                });
+            });
+        }
+        
+        function showPaymentDetails(method) {
+            // Hide all payment details
+            document.querySelectorAll('.payment-details').forEach(detail => {
+                detail.style.display = 'none';
+            });
+            
+            // Show selected payment details
+            const selectedDetails = document.getElementById(method + '-details');
+            if (selectedDetails) {
+                selectedDetails.style.display = 'block';
+            }
+        }
+        
+        function nextStep() {
+            if (validateCurrentStep()) {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateStepDisplay();
+                    
+                    if (currentStep === 3) {
+                        populateReviewStep();
+                    }
+                }
+            }
+        }
+        
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepDisplay();
+            }
+        }
+        
+        function goToStep(step) {
+            currentStep = step;
+            updateStepDisplay();
+        }
+        
+        function updateStepDisplay() {
+            // Update step indicators
+            document.querySelectorAll('.step').forEach((step, index) => {
+                const stepNumber = index + 1;
+                const stepCircle = step.querySelector('.step-circle');
+                const stepNumberSpan = step.querySelector('.step-number');
+                const stepCheck = step.querySelector('.step-check');
+                
+                if (stepNumber < currentStep) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                    stepNumberSpan.style.display = 'none';
+                    stepCheck.style.display = 'block';
+                } else if (stepNumber === currentStep) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                    stepNumberSpan.style.display = 'block';
+                    stepCheck.style.display = 'none';
+                } else {
+                    step.classList.remove('active', 'completed');
+                    stepNumberSpan.style.display = 'block';
+                    stepCheck.style.display = 'none';
+                }
+            });
+            
+            // Update form steps
+            document.querySelectorAll('.form-step').forEach((step, index) => {
+                if (index + 1 === currentStep) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+        }
+        
+        function validateCurrentStep() {
+            const currentFormStep = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+            const requiredFields = currentFormStep.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    showFieldError(field, 'This field is required');
+                    isValid = false;
+                } else {
+                    clearFieldError(field);
+                    
+                    // Additional validation
+                    if (field.type === 'email' && !isValidEmail(field.value)) {
+                        showFieldError(field, 'Please enter a valid email address');
+                        isValid = false;
+                    }
+                    
+                    if (field.name === 'cardNumber' && !isValidCardNumber(field.value)) {
+                        showFieldError(field, 'Please enter a valid card number');
+                        isValid = false;
+                    }
+                    
+                    if (field.name === 'expiry' && !isValidExpiry(field.value)) {
+                        showFieldError(field, 'Please enter a valid expiry date');
+                        isValid = false;
+                    }
+                    
+                    if (field.name === 'cvv' && !isValidCVV(field.value)) {
+                        showFieldError(field, 'Please enter a valid CVV');
+                        isValid = false;
+                    }
+                }
+            });
+            
+            return isValid;
+        }
+        
+        function showFieldError(field, message) {
+            const errorElement = document.getElementById(field.name + '-error');
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+            field.classList.add('error');
+        }
+        
+        function clearFieldError(field) {
+            const errorElement = document.getElementById(field.name + '-error');
+            if (errorElement) {
+                errorElement.style.display = 'none';
+            }
+            field.classList.remove('error');
+        }
+        
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+        
+        function isValidCardNumber(cardNumber) {
+            const cleaned = cardNumber.replace(/\s/g, '');
+            return /^[0-9]{13,19}$/.test(cleaned);
+        }
+        
+        function isValidExpiry(expiry) {
+            const match = expiry.match(/^(0[1-9]|1[0-2])\/([0-9]{2})$/);
+            if (!match) return false;
+            
+            const month = parseInt(match[1]);
+            const year = parseInt('20' + match[2]);
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            const currentMonth = now.getMonth() + 1;
+            
+            return year > currentYear || (year === currentYear && month >= currentMonth);
+        }
+        
+        function isValidCVV(cvv) {
+            return /^[0-9]{3,4}$/.test(cvv);
+        }
+        
+        function populateReviewStep() {
+            // Populate shipping review
+            const shippingReview = document.getElementById('review-shipping');
+            const formData = new FormData(document.getElementById('checkout-form'));
+            
+            shippingReview.innerHTML = `
+                <p><strong>${formData.get('firstName')} ${formData.get('lastName')}</strong></p>
+                <p>${formData.get('address')}</p>
+                ${formData.get('address2') ? `<p>${formData.get('address2')}</p>` : ''}
+                <p>${formData.get('city')}, ${formData.get('province')} ${formData.get('postalCode')}</p>
+                <p>Phone: ${formData.get('phone')}</p>
+                <p>Email: ${formData.get('email')}</p>
+            `;
+            
+            // Populate payment review
+            const paymentReview = document.getElementById('review-payment');
+            const paymentMethod = formData.get('payment');
+            
+            let paymentText = '';
+            switch(paymentMethod) {
+                case 'card':
+                    const cardNumber = formData.get('cardNumber');
+                    const maskedCard = cardNumber ? '**** **** **** ' + cardNumber.slice(-4) : '';
+                    paymentText = `Credit/Debit Card ${maskedCard}`;
+                    break;
+                case 'payfast':
+                    paymentText = 'PayFast (Instant EFT)';
+                    break;
+                case 'cod':
+                    paymentText = 'Cash on Delivery';
+                    break;
+            }
+            
+            paymentReview.innerHTML = `<p>${paymentText}</p>`;
+            
+            // Populate items review
+            const itemsReview = document.getElementById('review-items');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            itemsReview.innerHTML = cart.map(item => `
+                <div class="review-item">
+                    <img src="${item.image}" alt="${item.name}" class="review-item-image">
+                    <div class="review-item-details">
+                        <h4>${item.name}</h4>
+                        <p>Size: ${item.size} | Quantity: ${item.quantity}</p>
+                        <p class="review-item-price">R ${(item.price * item.quantity).toFixed(2)}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function loadOrderSummary() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const checkoutItems = document.getElementById('checkout-items');
+            
+            if (cart.length === 0) {
+                checkoutItems.innerHTML = '<p>Your cart is empty</p>';
+                return;
+            }
+            
+            checkoutItems.innerHTML = cart.map(item => `
+                <div class="summary-item">
+                    <img src="${item.image}" alt="${item.name}" class="summary-item-image">
+                    <div class="summary-item-details">
+                        <h4>${item.name}</h4>
+                        <p>Size: ${item.size}</p>
+                        <p>Qty: ${item.quantity}</p>
+                    </div>
+                    <div class="summary-item-price">R ${(item.price * item.quantity).toFixed(2)}</div>
+                </div>
+            `).join('');
+            
+            updateOrderSummary();
+        }
+        
+        function updateOrderSummary() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Get shipping cost based on selected method
+            const shippingMethod = document.querySelector('input[name="shipping"]:checked');
+            let shippingCost = 50; // Default standard shipping
+            
+            if (shippingMethod) {
+                shippingCost = shippingMethod.value === 'express' ? 120 : 50;
+            }
+            
+            // Add COD fee if selected
+            const paymentMethod = document.querySelector('input[name="payment"]:checked');
+            if (paymentMethod && paymentMethod.value === 'cod') {
+                shippingCost += 25; // COD handling fee
+            }
+            
+            // Free shipping over R500
+            if (subtotal >= 500) {
+                shippingCost = paymentMethod && paymentMethod.value === 'cod' ? 25 : 0;
+            }
+            
+            const tax = subtotal * 0.15; // 15% VAT
+            const total = subtotal + shippingCost + tax;
+            
+            document.getElementById('subtotal').textContent = `R ${subtotal.toFixed(2)}`;
+            document.getElementById('shipping-cost').textContent = shippingCost === 0 ? 'FREE' : `R ${shippingCost.toFixed(2)}`;
+            document.getElementById('tax').textContent = `R ${tax.toFixed(2)}`;
+            document.getElementById('total').textContent = `R ${total.toFixed(2)}`;
+        }
+        
+        function applyPromoCode() {
+            const promoCode = document.getElementById('promoCode').value.trim().toUpperCase();
+            
+            // Sample promo codes
+            const promoCodes = {
+                'WELCOME10': { type: 'percentage', value: 10, description: '10% off your first order' },
+                'SAVE50': { type: 'fixed', value: 50, description: 'R50 off your order' },
+                'FREESHIP': { type: 'shipping', value: 0, description: 'Free shipping' }
+            };
+            
+            if (promoCodes[promoCode]) {
+                // Apply promo code logic here
+                showNotification(`Promo code applied: ${promoCodes[promoCode].description}`);
+                updateOrderSummary();
+            } else {
+                showNotification('Invalid promo code', 'error');
+            }
+        }
+        
+        function setupFormValidation() {
+            const form = document.getElementById('checkout-form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (validateCurrentStep()) {
+                    processOrder();
+                }
+            });
+        }
+        
+        function processOrder() {
+            const submitBtn = document.getElementById('place-order-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            submitBtn.disabled = true;
+            
+            // Simulate order processing
+            setTimeout(() => {
+                const orderNumber = 'IRJ' + Date.now().toString().slice(-8);
+                
+                // Clear cart
+                localStorage.removeItem('cart');
+                
+                // Redirect to success page
+                window.location.href = `success.html?order=${orderNumber}`;
+            }, 3000);
+        }
+        
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+        
+        // Setup shipping method change handler
+        document.addEventListener('change', function(e) {
+            if (e.target.name === 'shipping' || e.target.name === 'payment') {
+                updateOrderSummary();
+            }
+        });
+    </script>
+</body>
+
+</html>

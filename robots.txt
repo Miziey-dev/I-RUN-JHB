@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.irunjhb.com/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /backend/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Allow important pages
+Allow: /index.html
+Allow: /shop.html
+Allow: /collections.html
+Allow: /about.html
+Allow: /lookbook.html
+Allow: /contact.html
+
+# Crawl delay (optional)
+Crawl-delay: 1

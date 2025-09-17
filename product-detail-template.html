@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Name - I RUN JHB | Premium South African Streetwear</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/products.js" defer></script>
+    <script src="js/wishlist.js" defer></script>
+    <script src="js/forms.js" defer></script>
+    
+    <style>
+        .product-detail {
+            padding: 2rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .product-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .thumbnail-images {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .thumbnail.active,
+        .thumbnail:hover {
+            opacity: 1;
+        }
+        
+        .product-info h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-black);
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+        }
+        
+        .product-description {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .product-options {
+            margin-bottom: 2rem;
+        }
+        
+        .option-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .option-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .size-options,
+        .color-options {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .size-option,
+        .color-option {
+            padding: 0.5rem 1rem;
+            border: 2px solid #ddd;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .size-option:hover,
+        .color-option:hover,
+        .size-option.selected,
+        .color-option.selected {
+            border-color: var(--gold-accent);
+            background: var(--gold-accent);
+            color: white;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .quantity-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            border: none;
+            padding: 0.5rem;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .add-to-cart-btn,
+        .add-to-wishlist-btn {
+            flex: 1;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .add-to-cart-btn {
+            background: var(--gold-accent);
+            color: white;
+        }
+        
+        .add-to-cart-btn:hover {
+            background: var(--hover-gold);
+        }
+        
+        .add-to-wishlist-btn {
+            background: white;
+            color: var(--primary-black);
+            border: 2px solid var(--primary-black);
+        }
+        
+        .add-to-wishlist-btn:hover {
+            background: var(--primary-black);
+            color: white;
+        }
+        
+        .product-details {
+            border-top: 1px solid #eee;
+            padding-top: 2rem;
+        }
+        
+        .detail-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 2rem;
+        }
+        
+        .tab-btn {
+            padding: 1rem 2rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .tab-btn.active {
+            border-bottom-color: var(--gold-accent);
+            color: var(--gold-accent);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .product-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .detail-tabs {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">I RUN JHB</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#collections">Collections</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="index.html#lookbook">Lookbook</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div>
+                <button class="cart-icon" onclick="toggleCart()" aria-label="Open shopping cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="wishlist-icon" onclick="toggleWishlist()" aria-label="Open wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+            </div>
+            <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <main class="product-detail">
+        <div class="container">
+            <div class="product-layout">
+                <div class="product-images">
+                    <img src="assets/products/product-1.jpg" alt="Product Name" class="main-image" id="mainImage">
+                    <div class="thumbnail-images">
+                        <img src="assets/products/product-1.jpg" alt="Product view 1" class="thumbnail active" onclick="changeMainImage(this)">
+                        <img src="assets/products/product-2.jpg" alt="Product view 2" class="thumbnail" onclick="changeMainImage(this)">
+                        <img src="assets/products/product-3.jpg" alt="Product view 3" class="thumbnail" onclick="changeMainImage(this)">
+                    </div>
+                </div>
+                
+                <div class="product-info">
+                    <h1 id="productName">Premium Streetwear T-Shirt</h1>
+                    <div class="product-price" id="productPrice">R 299.00</div>
+                    <div class="product-description">
+                        <p>Premium quality streetwear celebrating Johannesburg's hustle culture. Made from 100% cotton with a comfortable fit and bold African-inspired design.</p>
+                    </div>
+                    
+                    <div class="product-options">
+                        <div class="option-group">
+                            <label>Size:</label>
+                            <div class="size-options">
+                                <div class="size-option" data-size="XS" onclick="selectSize(this)">XS</div>
+                                <div class="size-option selected" data-size="S" onclick="selectSize(this)">S</div>
+                                <div class="size-option" data-size="M" onclick="selectSize(this)">M</div>
+                                <div class="size-option" data-size="L" onclick="selectSize(this)">L</div>
+                                <div class="size-option" data-size="XL" onclick="selectSize(this)">XL</div>
+                            </div>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label>Color:</label>
+                            <div class="color-options">
+                                <div class="color-option selected" data-color="Black" onclick="selectColor(this)">Black</div>
+                                <div class="color-option" data-color="White" onclick="selectColor(this)">White</div>
+                                <div class="color-option" data-color="Gold" onclick="selectColor(this)">Gold</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <label>Quantity:</label>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                            <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="10">
+                            <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="add-to-cart-btn" onclick="addToCartFromDetail()">
+                            <i class="fas fa-shopping-bag"></i> ADD TO CART
+                        </button>
+                        <button class="add-to-wishlist-btn" onclick="addToWishlistFromDetail()">
+                            <i class="fas fa-heart"></i> ADD TO WISHLIST
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-details">
+                <div class="detail-tabs">
+                    <button class="tab-btn active" onclick="showTab('description')">Description</button>
+                    <button class="tab-btn" onclick="showTab('sizing')">Size Guide</button>
+                    <button class="tab-btn" onclick="showTab('care')">Care Instructions</button>
+                </div>
+                
+                <div class="tab-content active" id="description">
+                    <h3>Product Description</h3>
+                    <p>This premium streetwear piece embodies the spirit of Johannesburg's hustle culture. Crafted from high-quality materials and featuring bold African-inspired designs, it's perfect for those who want to make a statement while staying comfortable.</p>
+                    <ul>
+                        <li>100% Premium Cotton</li>
+                        <li>Pre-shrunk fabric</li>
+                        <li>Reinforced seams</li>
+                        <li>African-inspired design</li>
+                        <li>Comfortable regular fit</li>
+                    </ul>
+                </div>
+                
+                <div class="tab-content" id="sizing">
+                    <h3>Size Guide</h3>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Size</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Chest (cm)</th>
+                            <th style="border: 1px solid #ddd; padding: 8px;">Length (cm)</th>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;">XS</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">86-91</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">66</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;">S</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">91-96</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">69</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;">M</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">96-101</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">72</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;">L</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">101-106</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">75</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;">XL</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">106-111</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">78</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="tab-content" id="care">
+                    <h3>Care Instructions</h3>
+                    <ul>
+                        <li>Machine wash cold with like colors</li>
+                        <li>Use mild detergent</li>
+                        <li>Do not bleach</li>
+                        <li>Tumble dry low heat</li>
+                        <li>Iron on low heat if needed</li>
+                        <li>Do not dry clean</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let selectedSize = 'S';
+        let selectedColor = 'Black';
+        
+        function changeMainImage(thumbnail) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = thumbnail.src;
+            
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            thumbnail.classList.add('active');
+        }
+        
+        function selectSize(sizeElement) {
+            document.querySelectorAll('.size-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            sizeElement.classList.add('selected');
+            selectedSize = sizeElement.dataset.size;
+        }
+        
+        function selectColor(colorElement) {
+            document.querySelectorAll('.color-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            colorElement.classList.add('selected');
+            selectedColor = colorElement.dataset.color;
+        }
+        
+        function increaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            const currentValue = parseInt(quantityInput.value);
+            if (currentValue < 10) {
+                quantityInput.value = currentValue + 1;
+            }
+        }
+        
+        function decreaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            const currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        }
+        
+        function addToCartFromDetail() {
+            const productName = document.getElementById('productName').textContent;
+            const productPrice = parseFloat(document.getElementById('productPrice').textContent.replace('R ', ''));
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const mainImage = document.getElementById('mainImage').src;
+            
+            const product = {
+                id: 'product-detail-' + Date.now(),
+                name: productName,
+                price: productPrice,
+                image: mainImage,
+                size: selectedSize,
+                color: selectedColor,
+                quantity: quantity
+            };
+            
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => 
+                item.name === productName && 
+                item.size === selectedSize && 
+                item.color === selectedColor
+            );
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push(product);
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            showNotification(`${productName} added to cart!`);
+        }
+        
+        function addToWishlistFromDetail() {
+            const productName = document.getElementById('productName').textContent;
+            const productPrice = parseFloat(document.getElementById('productPrice').textContent.replace('R ', ''));
+            const mainImage = document.getElementById('mainImage').src;
+            
+            const product = {
+                id: 'wishlist-' + Date.now(),
+                name: productName,
+                price: productPrice,
+                image: mainImage
+            };
+            
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const existingItem = wishlist.find(item => item.name === productName);
+            
+            if (!existingItem) {
+                wishlist.push(product);
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                updateWishlistCount();
+                showNotification(`${productName} added to wishlist!`);
+            } else {
+                showNotification(`${productName} is already in your wishlist!`, 'info');
+            }
+        }
+        
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+        
+        function updateWishlistCount() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            document.getElementById('wishlistCount').textContent = wishlist.length;
+        }
+        
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1rem 2rem;
+                background: ${type === 'error' ? '#e74c3c' : type === 'success' ? '#27ae60' : '#3498db'};
+                color: white;
+                border-radius: 4px;
+                z-index: 10001;
+                font-weight: 600;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, 3000);
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            updateWishlistCount();
+        });
+    </script>
+</body>
+</html>

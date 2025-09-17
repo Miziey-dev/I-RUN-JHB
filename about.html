@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - I RUN JHB | Premium South African Streetwear</title>
+    <meta name="description" content="Discover I RUN JHB's story - from Johannesburg's streets to premium UMSWENKO streetwear. Learn about our mission, collections, and commitment to South African street culture.">
+    <link rel="icon" href="assets/logo/logo-gold.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    <script src="script.js" defer></script>
+    <script src="js/collections.js" defer></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">I RUN JHB</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html" class="active">Our Story</a></li>
+                <li><a href="lookbook.html">Lookbook</a></li>
+                <li><a href="stockists.html">Stockists</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="search-icon" aria-label="Search products" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="account-icon" aria-label="Account" id="accountBtn">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="cart-icon" aria-label="Open shopping cart" id="cartBtn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="wishlist-icon" aria-label="Open wishlist" id="wishlistBtn">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-hero">
+            <div class="hero-content">
+                <h1>Our Story</h1>
+                <p>The journey of UMSWENKO and South African street culture</p>
+            </div>
+        </section>
+
+        <section class="about-detailed">
+            <div class="container">
+                <!-- Brand Story -->
+                <div class="brand-story">
+                    <div class="story-content">
+                        <h2>Born in the City of Gold</h2>
+                        <p class="lead">I RUN JHB is more than a brand—it's a movement celebrating Johannesburg's hustle culture and African heritage through premium streetwear called UMSWENKO.</p>
+                        
+                        <div class="story-grid">
+                            <div class="story-text">
+                                <h3>Our Genesis</h3>
+                                <p>Founded in the heart of Johannesburg, I RUN JHB emerged from a deep passion for South African street culture and the vibrant energy of the City of Gold. We recognized the need for authentic streetwear that truly represents the spirit of Johannesburg's youth and their relentless hustle.</p>
+                                
+                                <h3>The UMSWENKO Philosophy</h3>
+                                <p>UMSWENKO is more than just clothing—it's a lifestyle that fuses traditional African culture with contemporary Kasi (township) trends. Our designs celebrate the rich tapestry of South African heritage while embracing the modern urban aesthetic that defines Johannesburg's street culture.</p>
+                            </div>
+                            <div class="story-visual">
+                                <div class="story-image story-image-pic1" role="img" aria-label="I RUN JHB brand story"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission & Vision -->
+                <div class="mission-vision">
+                    <div class="mission-grid">
+                        <div class="mission-card">
+                            <div class="card-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h3>Our Mission</h3>
+                            <p>To create premium streetwear that authentically represents South African street culture, empowering youth aged 18-35 to express their identity through fashion that celebrates both tradition and innovation.</p>
+                        </div>
+                        <div class="mission-card">
+                            <div class="card-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h3>Our Vision</h3>
+                            <p>To become the leading South African streetwear brand that bridges the gap between African heritage and contemporary urban fashion, inspiring a global appreciation for Johannesburg's unique street culture.</p>
+                        </div>
+                        <div class="mission-card">
+                            <div class="card-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>Our Values</h3>
+                            <p>Authenticity, cultural pride, quality craftsmanship, and community empowerment drive everything we do. We believe in celebrating our roots while pushing boundaries in streetwear design.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Target Market -->
+                <div class="target-market">
+                    <h2>Who We Serve</h2>
+                    <div class="market-grid">
+                        <div class="market-segment">
+                            <h3>African Youth (18-35)</h3>
+                            <p>Young South Africans who are proud of their heritage and want to express their cultural identity through contemporary streetwear that speaks to their urban lifestyle.</p>
+                        </div>
+                        <div class="market-segment">
+                            <h3>Cultural Tourists</h3>
+                            <p>Visitors to South Africa seeking authentic, locally-made fashion that captures the essence of Johannesburg's vibrant street culture and African heritage.</p>
+                        </div>
+                        <div class="market-segment">
+                            <h3>International Audience</h3>
+                            <p>Global streetwear enthusiasts who appreciate unique, culturally-rich designs and want to connect with authentic African urban fashion.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Lines -->
+                <div class="product-lines">
+                    <h2>Our Collections</h2>
+                    <div class="collections-grid">
+                        <div class="collection-card" onclick="showCollectionTooltip('hustle')">
+                            <div class="collection-image collection-image-pic2" role="img" aria-label="Hustle Heritage Collection"></div>
+                            <div class="collection-info">
+                                <h3>Hustle Heritage</h3>
+                                <p>Our flagship collection celebrating the entrepreneurial spirit of Johannesburg. Features bold graphics, traditional African patterns, and premium materials that honor our cultural roots.</p>
+                                <ul>
+                                    <li>Premium hoodies and sweatshirts</li>
+                                    <li>Graphic tees with African motifs</li>
+                                    <li>Tracksuits and joggers</li>
+                                    <li>Heritage-inspired accessories</li>
+                                </ul>
+                                <div class="collection-expand-hint" title="Click to see full details">
+                                    <i class="fas fa-expand-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="collection-card" onclick="showCollectionTooltip('city')">
+                            <div class="collection-image collection-image-pic4" role="img" aria-label="City Dreams Collection"></div>
+                            <div class="collection-info">
+                                <h3>City Dreams</h3>
+                                <p>Urban essentials for the dreamers and achievers. Clean lines, modern cuts, and subtle branding for those who prefer understated elegance with a streetwear edge.</p>
+                                <ul>
+                                    <li>Minimalist t-shirts and tanks</li>
+                                    <li>Urban caps and beanies</li>
+                                    <li>Casual shorts and pants</li>
+                                    <li>Everyday accessories</li>
+                                </ul>
+                                <div class="collection-expand-hint" title="Click to see full details">
+                                    <i class="fas fa-expand-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="collection-card" onclick="showCollectionTooltip('gold')">
+                            <div class="collection-image collection-image-pic6" role="img" aria-label="Gold Rush Collection"></div>
+                            <div class="collection-info">
+                                <h3>Gold Rush</h3>
+                                <p>Limited edition luxury pieces inspired by Johannesburg's golden legacy. Premium materials, exclusive designs, and gold accents that represent the pinnacle of South African streetwear.</p>
+                                <ul>
+                                    <li>Limited edition bomber jackets</li>
+                                    <li>Premium gold-accented pieces</li>
+                                    <li>Luxury streetwear essentials</li>
+                                    <li>Collector's edition items</li>
+                                </ul>
+                                <div class="collection-expand-hint" title="Click to see full details">
+                                    <i class="fas fa-expand-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements -->
+                <div class="achievements">
+                    <h2>Our Journey</h2>
+                    <div class="achievements-grid">
+                        <div class="achievement-item">
+                            <div class="achievement-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3>Brand Recognition</h3>
+                            <p>Established as a leading voice in South African streetwear, recognized for authentic cultural representation and premium quality.</p>
+                        </div>
+                        
+                        <div class="achievement-item">
+                            <div class="achievement-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Community Impact</h3>
+                            <p>Built a strong community of brand ambassadors and loyal customers who embody the UMSWENKO lifestyle and values.</p>
+                        </div>
+                        
+                        <div class="achievement-item">
+                            <div class="achievement-icon">
+                                <i class="fas fa-globe-africa"></i>
+                            </div>
+                            <h3>Cultural Ambassador</h3>
+                            <p>Proudly representing South African street culture on both local and international platforms, showcasing the richness of our heritage.</p>
+                        </div>
+                        
+                        <div class="achievement-item">
+                            <div class="achievement-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3>Celebrity Endorsements</h3>
+                            <p>Worn and endorsed by influential South African celebrities, musicians, and cultural icons who align with our brand values.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand Values -->
+                <div class="brand-values">
+                    <h2>What Drives Us</h2>
+                    <div class="values-content">
+                        <div class="value-item">
+                            <h3>Authenticity</h3>
+                            <p>Every piece we create is rooted in genuine South African street culture, ensuring our designs remain true to their origins while pushing creative boundaries.</p>
+                        </div>
+                        
+                        <div class="value-item">
+                            <h3>Quality Craftsmanship</h3>
+                            <p>We use only premium materials and employ skilled artisans to ensure every garment meets our high standards for durability, comfort, and style.</p>
+                        </div>
+                        
+                        <div class="value-item">
+                            <h3>Cultural Pride</h3>
+                            <p>We celebrate the rich diversity of South African culture, incorporating traditional elements in contemporary designs that honor our heritage.</p>
+                        </div>
+                        
+                        <div class="value-item">
+                            <h3>Community Empowerment</h3>
+                            <p>We believe in giving back to our community, supporting local talent, and creating opportunities for young South Africans in the fashion industry.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="cta-section">
+                    <div class="cta-content">
+                        <h2>Join the UMSWENKO Movement</h2>
+                        <p>Be part of a community that celebrates South African street culture, embraces authenticity, and represents the hustle spirit of Johannesburg.</p>
+                        <div class="cta-buttons">
+                            <a href="shop.html" class="btn btn-primary">Shop Our Collections</a>
+                            <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" aria-label="Close cart" id="closeCartBtn">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <p>Your cart is empty</p>
+                <a href="shop.html" class="continue-shopping">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Drawer -->
+    <div class="wishlist-drawer" id="wishlistDrawer">
+        <div class="wishlist-header">
+            <h3>Wishlist</h3>
+            <button class="close-wishlist" aria-label="Close wishlist" id="closeWishlistBtn">&times;</button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <div class="wishlist-empty">
+                <p>Your wishlist is empty</p>
+                <a href="shop.html" class="continue-shopping">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>I RUN JHB</h3>
+                    <p>Premium South African streetwear celebrating Johannesburg's hustle culture and African heritage.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/IRUNJHB/" target="_blank" rel="noopener" aria-label="Follow us on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/irunjozi/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://x.com/IRUNJHB/" target="_blank" rel="noopener" aria-label="Follow us on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@irunjhb" target="_blank" rel="noopener" aria-label="Follow us on TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <nav>
+                        <a href="index.html">Home</a>
+                        <a href="shop.html">Shop</a>
+                        <a href="about.html">About</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Customer Care</h3>
+                    <nav>
+                        <a href="#">Shipping Info</a>
+                        <a href="#">Returns & Exchanges</a>
+                        <a href="#">Care Instructions</a>
+                        <a href="#">FAQ</a>
+                    </nav>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with our latest drops and exclusive offers.</p>
+                    <form class="newsletter-form" id="newsletterForm" novalidate>
+                        <input type="email" name="email" placeholder="Enter your email" required autocomplete="email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 I RUN JHB. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Collection Tooltips -->
+    <div class="tooltip-overlay" id="tooltipOverlay" onclick="closeCollectionTooltip()">
+        <div class="collection-tooltip" id="collectionTooltip" onclick="event.stopPropagation()">
+            <button class="tooltip-close" onclick="closeCollectionTooltip()">&times;</button>
+            <div id="tooltipContent"></div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+</body>
+</html>

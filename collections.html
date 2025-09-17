@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Collections | I RUN JHB</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore premium streetwear collections from I RUN JHB.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/logo/logo-gold.png">
+  <meta property="og:title" content="Collections | I RUN JHB - Premium South African Streetwear">
+  <meta property="og:description" content="Explore premium streetwear collections from I RUN JHB - Windbreaker, City Dreams, Gold Rush, and Colours of Confidence.">
+  <meta property="og:image" content="assets/img/product-1.jpg">
+  <meta property="og:url" content="https://www.irunjhb.com/collections.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Collections | I RUN JHB">
+  <meta name="twitter:description" content="Explore premium streetwear collections from I RUN JHB.">
+  <meta name="twitter:image" content="assets/img/product-1.jpg">
+  <link rel="stylesheet" href="global-styles.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="header-fixes.css">
+  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="size-guide-styles.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous" />
+</head>
+
+<body>
+  <header>
+    <nav aria-label="Main navigation">
+      <a href="index.html" class="logo-link" aria-label="Home">
+        <img src="assets/logo/logo-gold.png" alt="I RUN JHB Logo" class="logo-img" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="collections.html" aria-current="page">Collections</a></li>
+        <li><a href="lookbook.html">Lookbook</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="search-icon" aria-label="Search products" id="searchBtn"><i class="fa fa-search"></i></button>
+        <button class="user-icon" aria-label="Account" id="accountBtn"><i class="fa fa-user"></i></button>
+        <button class="cart-icon" aria-label="Open shopping cart" id="cartBtn"><i class="fa fa-shopping-cart"></i>
+        </button>
+        <button class="wishlist-icon" aria-label="Open wishlist" id="wishlistBtn"><i class="fa fa-heart"></i></button>
+        <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Our Collections</h1>
+      <p>Discover the latest drops and exclusive lines from I RUN JHB.</p>
+    </section>
+    <section class="collections-grid" aria-label="Collections">
+      <div class="collection-card premium-frame" data-href="shop.html?collection=windbreaker" tabindex="0"
+        aria-label="Windbreaker Collection">
+        <img src="assets/img/product-1.jpg" alt="Windbreaker Collection - Premium streetwear jackets and outerwear" loading="lazy" width="300" height="400" />
+        <h2>Windbreaker</h2>
+      </div>
+      <div class="collection-card premium-frame" data-href="shop.html?collection=citydreams" tabindex="0"
+        aria-label="City Dreams Collection">
+        <img src="assets/img/product-2.jpg" alt="City Dreams Collection - Urban streetwear for city dreamers" loading="lazy" width="300" height="400" />
+        <h2>City Dreams</h2>
+      </div>
+      <div class="collection-card premium-frame" data-href="shop.html?collection=goldrush" tabindex="0"
+        aria-label="Gold Rush Collection">
+        <img src="assets/img/product-1.jpg" alt="Gold Rush Collection - Limited edition luxury streetwear" loading="lazy" width="300" height="400" />
+        <h2>Gold Rush</h2>
+      </div>
+      <div class="collection-card premium-frame" data-href="shop.html?collection=coloursOFConfidence" tabindex="0"
+        aria-label="Colours of Confidence Collection">
+        <img src="assets/img/product-2.jpg" alt="Colours of Confidence Collection - Vibrant streetwear celebrating self-expression" loading="lazy" width="300" height="400" />
+        <h2>Colours of Confidence</h2>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modals and overlays -->
+  <div class="cart-modal modal" id="cartModal" aria-hidden="true">
+    <button class="close-cart" aria-label="Close cart" id="closeCartBtn">&times;</button>
+    <h2>Your Cart</h2>
+    <!-- Cart content here -->
+    <a href="shop.html" class="continue-shopping" id="continueShoppingCart">Continue Shopping</a>
+    <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+  </div>
+  <div class="wishlist-modal modal" id="wishlistModal" aria-hidden="true">
+    <button class="close-cart" aria-label="Close wishlist" id="closeWishlistBtn">&times;</button>
+    <h2>Your Wishlist</h2>
+    <!-- Wishlist content here -->
+    <a href="shop.html" class="continue-shopping" id="continueShoppingWishlist">Continue Shopping</a>
+  </div>
+  <div class="search-modal modal" id="searchModal" aria-hidden="true">
+    <button class="close-search" aria-label="Close search" id="closeSearchBtn">&times;</button>
+    <h2>Search</h2>
+    <!-- Search form here -->
+  </div>
+  <div class="account-modal modal" id="accountModal" aria-hidden="true">
+    <button class="modal-close" aria-label="Close account modal" id="closeAccountBtn">&times;</button>
+    <h2>Account</h2>
+    <!-- Account form here -->
+    <p class="account-link">Don't have an account? <a href="#" class="switchTab" data-tab="register">Sign up</a>
+    </p>
+    <p class="account-link">Already have an account? <a href="#" class="switchTab" data-tab="login">Login</a>
+    </p>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <footer>
+    <p>&copy; 2025 I RUN JHB. All rights reserved.</p>
+    <nav aria-label="Footer navigation">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="returns-exchanges.html">Returns & Exchanges</a>
+      <a href="shipping-info.html">Shipping Info</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/security.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/products.js" defer></script>
+  <script src="js/wishlist.js" defer></script>
+  <script src="js/forms.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Navigation actions
+      document.getElementById('searchBtn').addEventListener('click', toggleSearch);
+      document.getElementById('accountBtn').addEventListener('click', toggleAccount);
+      document.getElementById('wishlistBtn').addEventListener('click', toggleWishlist);
+      document.getElementById('cartBtn').addEventListener('click', toggleCart);
+      document.getElementById('menuToggle').addEventListener('click', toggleMobileMenu);
+      document.getElementById('closeCartBtn').addEventListener('click', toggleCart);
+      document.getElementById('closeWishlistBtn').addEventListener('click', toggleWishlist);
+      document.getElementById('closeSearchBtn').addEventListener('click', toggleSearch);
+      document.getElementById('closeAccountBtn').addEventListener('click', toggleAccount);
+      document.getElementById('continueShoppingCart').addEventListener('click', function (e) { e.preventDefault(); toggleCart(); });
+      document.getElementById('continueShoppingWishlist').addEventListener('click', function (e) { e.preventDefault(); toggleWishlist(); });
+      document.getElementById('checkoutBtn').addEventListener('click', function () { window.location.href = 'checkout.html'; });
+      document.getElementById('overlay').addEventListener('click', closeAllModals);
+
+      // Collection card navigation
+      document.querySelectorAll('.collection-card[data-href]').forEach(function (card) {
+        card.addEventListener('click', function () {
+          window.location.href = card.getAttribute('data-href');
+        });
+        card.addEventListener('keypress', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            window.location.href = card.getAttribute('data-href');
+          }
+        });
+      });
+
+      // Account tab switching
+      document.querySelectorAll('.switchTab').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          switchTab(link.getAttribute('data-tab'));
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

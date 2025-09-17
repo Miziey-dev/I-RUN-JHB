@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lookbook - I RUN JHB | Premium South African Streetwear</title>
+    <meta name="description" content="Explore our latest UMSWENKO collections and street style inspiration from Johannesburg's urban culture.">
+    <link rel="icon" href="assets/logo/logo-gold.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">I RUN JHB</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="lookbook.html" class="active">Lookbook</a></li>
+                <li><a href="stockists.html">Stockists</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="search-icon" aria-label="Search products" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="account-icon" aria-label="Account" id="accountBtn">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="cart-icon" aria-label="Open shopping cart" id="cartBtn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="wishlist-icon" aria-label="Open wishlist" id="wishlistBtn">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-hero">
+            <div class="hero-content">
+                <h1>Lookbook</h1>
+                <p>Street style inspiration from the City of Gold</p>
+            </div>
+        </section>
+
+        <section class="lookbook-content">
+            <div class="container">
+                <h2>Coming Soon</h2>
+                <p>Our latest UMSWENKO collections and street style photography will be featured here.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" aria-label="Close cart" id="closeCartBtn">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <p>Your cart is empty</p>
+                <a href="shop.html" class="continue-shopping">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Drawer -->
+    <div class="wishlist-drawer" id="wishlistDrawer">
+        <div class="wishlist-header">
+            <h3>Wishlist</h3>
+            <button class="close-wishlist" aria-label="Close wishlist" id="closeWishlistBtn">&times;</button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <div class="wishlist-empty">
+                <p>Your wishlist is empty</p>
+                <a href="shop.html" class="continue-shopping">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>I RUN JHB</h3>
+                    <p>Premium South African streetwear celebrating Johannesburg's hustle culture and African heritage.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/IRUNJHB/" target="_blank" rel="noopener" aria-label="Follow us on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/irunjozi/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://x.com/IRUNJHB/" target="_blank" rel="noopener" aria-label="Follow us on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@irunjhb" target="_blank" rel="noopener" aria-label="Follow us on TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <nav>
+                        <a href="index.html">Home</a>
+                        <a href="shop.html">Shop</a>
+                        <a href="about.html">About</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Customer Care</h3>
+                    <nav>
+                        <a href="#">Shipping Info</a>
+                        <a href="#">Returns & Exchanges</a>
+                        <a href="#">Care Instructions</a>
+                        <a href="#">FAQ</a>
+                    </nav>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with our latest drops and exclusive offers.</p>
+                    <form class="newsletter-form" id="newsletterForm" novalidate>
+                        <input type="email" name="email" placeholder="Enter your email" required autocomplete="email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 I RUN JHB. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+</body>
+</html>
