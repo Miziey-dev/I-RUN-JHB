@@ -740,23 +740,27 @@ const UIManager = {
                         const img = entry.target;
                         if (img.dataset.src) {
                             img.src = img.dataset.src;
-                            img.classList.remove('lazy');
                         }
+                        img.classList.remove('lazy');
                         img.classList.add('loaded');
                         imageObserver.unobserve(img);
                     }
                 });
             }, { rootMargin: '50px' });
 
-            // Observe all images
+            // Observe all images - images that already finished loading
+            // (fast/cached loads racing ahead of this script) are marked
+            // loaded immediately instead of being silently stuck at opacity:0
             document.querySelectorAll('img').forEach(img => {
-                img.classList.add('lazy');
-                if (!img.complete) {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.classList.add('lazy');
                     imageObserver.observe(img);
                 }
             });
         }
-        
+
         // Preload critical images
         this.preloadCriticalImages();
     },
