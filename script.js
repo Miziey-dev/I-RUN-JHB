@@ -763,7 +763,7 @@ const UIManager = {
     
     preloadCriticalImages() {
         const criticalImages = [
-            'images/Hero.jpg',
+            'images/hero.jpg',
             'images/pic1.jpg',
             'images/pic2.jpg'
         ];
@@ -1020,6 +1020,159 @@ const BrowserCompatibility = {
     }
 };
 
+// Product Catalog for Shop page
+const PRODUCTS = [
+    { id: 'heritage-ndebele-bomber', name: 'Heritage Ndebele Bomber', price: 1499, category: 'heritage', image: 'images/collection-heritage.jpg', desc: 'Traditional print bomber celebrating Ndebele geometric pattern work.', badge: 'New' },
+    { id: 'kasi-windbreaker', name: 'Kasi Windbreaker Track Jacket', price: 1299, category: 'gold', image: 'images/lookbook-09.jpg', desc: 'Bold colour-blocked windbreaker built for the streets of Jozi.' },
+    { id: 'city-dreams-tee', name: 'City Dreams Graphic Tee', price: 549, category: 'city', image: 'images/hero-alt.jpg', desc: 'Everyday tee for the dreamers and hustlers of the City of Gold.' },
+    { id: 'amapantsula-track-pants', name: 'Amapantsula Track Pants', price: 799, category: 'city', image: 'images/product-green-set.jpg', desc: 'Relaxed-fit track pants inspired by Kasi pantsula culture.' },
+    { id: 'umswenko-golfer', name: 'UMSWENKO Golfer Shirt', price: 649, category: 'heritage', image: 'images/product-teal-floral.jpg', desc: 'Smart-casual golfer with traditional trim detailing.' },
+    { id: 'braamfontein-duffel', name: 'Braamfontein Duffel Bag', price: 899, category: 'city', image: 'images/product-friends-bags.jpg', desc: 'Weekend-ready duffel with heritage print panels.' },
+    { id: 'gold-rush-bomber', name: 'Gold Rush Satin Bomber', price: 1599, category: 'gold', image: 'images/collection-gold.jpg', desc: 'Limited edition satin bomber inspired by Johannesburg’s golden legacy.', badge: 'Limited' },
+    { id: 'traditional-wrap-dress', name: 'Traditional Print Wrap Dress', price: 1099, category: 'heritage', image: 'images/collection-heritage.jpg', desc: 'Flowing wrap dress in indigenous South African print fabric.' },
+    { id: 'jozi-fanny-pack', name: 'Jozi Fanny Pack', price: 399, category: 'city', image: 'images/lookbook-09.jpg', desc: 'Compact crossbody fanny pack for city runs.' },
+    { id: 'township-jumpsuit', name: 'Township Trends Jumpsuit', price: 1199, category: 'heritage', image: 'images/lookbook-10.jpg', desc: 'One-piece jumpsuit fusing Kasi tailoring with heritage cloth.' },
+    { id: 'hustle-travel-bag', name: 'Hustle Culture Travel Bag', price: 1099, category: 'gold', image: 'images/lookbook-11.jpg', desc: 'Durable travel bag for the ambitious and always-on-the-move.' },
+    { id: 'izikhothane-tracksuit', name: 'Izikhothane Track Suit', price: 1799, category: 'gold', image: 'images/lookbook-12.jpg', desc: 'Statement tracksuit celebrating izikhothane street sub-culture flair.', badge: 'Limited' },
+    { id: 'sepedi-heritage-shirt', name: 'Sepedi Heritage Shirt', price: 699, category: 'heritage', image: 'images/hero.jpg', desc: 'Button-up shirt drawing on Sepedi pattern traditions.' },
+    { id: 'city-lights-backpack', name: 'City Lights Backpack', price: 949, category: 'city', image: 'images/product-friends-bags.jpg', desc: 'Everyday backpack with reflective city-lights trim.' },
+    { id: 'gold-standard-cap', name: 'Gold Standard Cap', price: 349, category: 'gold', image: 'images/collection-gold.jpg', desc: 'Embroidered cap finishing off any UMSWENKO fit.' }
+];
+
+const ShopCatalog = {
+    state: {
+        search: '',
+        category: 'all',
+        price: 'all',
+        sort: 'featured',
+        visibleCount: 6
+    },
+
+    init() {
+        this.grid = document.getElementById('productsGrid');
+        if (!this.grid) return;
+
+        this.searchInput = document.getElementById('searchInput');
+        this.categoryFilter = document.getElementById('categoryFilter');
+        this.priceFilter = document.getElementById('priceFilter');
+        this.sortFilter = document.getElementById('sortFilter');
+        this.loadMoreBtn = document.getElementById('loadMoreBtn');
+
+        const params = new URLSearchParams(window.location.search);
+        const collectionParam = params.get('collection');
+        if (collectionParam && ['heritage', 'city', 'gold'].includes(collectionParam)) {
+            this.state.category = collectionParam;
+            if (this.categoryFilter) this.categoryFilter.value = collectionParam;
+        }
+
+        this.searchInput?.addEventListener('input', Utils.debounce((e) => {
+            this.state.search = e.target.value.toLowerCase().trim();
+            this.state.visibleCount = 6;
+            this.render();
+        }, 250));
+
+        this.categoryFilter?.addEventListener('change', (e) => {
+            this.state.category = e.target.value;
+            this.state.visibleCount = 6;
+            this.render();
+        });
+
+        this.priceFilter?.addEventListener('change', (e) => {
+            this.state.price = e.target.value;
+            this.state.visibleCount = 6;
+            this.render();
+        });
+
+        this.sortFilter?.addEventListener('change', (e) => {
+            this.state.sort = e.target.value;
+            this.render();
+        });
+
+        this.loadMoreBtn?.addEventListener('click', () => {
+            this.state.visibleCount += 6;
+            this.render();
+        });
+
+        this.render();
+    },
+
+    getFiltered() {
+        let items = PRODUCTS.filter(p => {
+            if (this.state.category !== 'all' && p.category !== this.state.category) return false;
+            if (this.state.search && !p.name.toLowerCase().includes(this.state.search) && !p.desc.toLowerCase().includes(this.state.search)) return false;
+            if (this.state.price !== 'all') {
+                if (this.state.price.endsWith('+')) {
+                    const minVal = parseInt(this.state.price);
+                    if (p.price < minVal) return false;
+                } else {
+                    const [minVal, maxVal] = this.state.price.split('-').map(Number);
+                    if (p.price < minVal || p.price > maxVal) return false;
+                }
+            }
+            return true;
+        });
+
+        switch (this.state.sort) {
+            case 'price-low': items.sort((a, b) => a.price - b.price); break;
+            case 'price-high': items.sort((a, b) => b.price - a.price); break;
+            case 'newest': items = items.slice().reverse(); break;
+            default: break;
+        }
+
+        return items;
+    },
+
+    render() {
+        const items = this.getFiltered();
+        const visible = items.slice(0, this.state.visibleCount);
+
+        if (visible.length === 0) {
+            this.grid.innerHTML = `<p class="no-products" style="grid-column: 1/-1; text-align:center; padding: 3rem 1rem; color: var(--text-gray);">No products match your search. Try a different filter.</p>`;
+        } else {
+            this.grid.innerHTML = visible.map(p => this.cardHTML(p)).join('');
+        }
+
+        if (this.loadMoreBtn) {
+            this.loadMoreBtn.style.display = this.state.visibleCount < items.length ? 'inline-flex' : 'none';
+        }
+    },
+
+    cardHTML(p) {
+        return `
+            <article class="product-card" data-collection="${p.category}" data-product-id="${p.id}">
+                <div class="product-image">
+                    <img src="${p.image}" alt="${Utils.sanitizeInput(p.name)} - ${Utils.sanitizeInput(p.desc)}" loading="lazy">
+                    ${p.badge ? `<span class="quick-view" style="opacity:1; bottom:auto; top:1rem; left:1rem; transform:none; background:var(--umswenko-gradient); color:white;">${p.badge}</span>` : ''}
+                    <button class="wishlist-btn" aria-label="Add to wishlist" data-product="${p.id}">
+                        <i class="fas fa-heart" aria-hidden="true"></i>
+                    </button>
+                    <span class="quick-view" role="button" tabindex="0" aria-label="Quick view ${Utils.sanitizeInput(p.name)}">Quick View</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">${Utils.sanitizeInput(p.name)}</h3>
+                    <p class="product-price">${Utils.formatCurrency(p.price)}</p>
+                    <div class="product-actions">
+                        <label for="size-${p.id}" class="sr-only">Select size for ${Utils.sanitizeInput(p.name)}</label>
+                        <select class="size-selector" id="size-${p.id}" autocomplete="off">
+                            <option value="S">Small</option>
+                            <option value="M" selected>Medium</option>
+                            <option value="L">Large</option>
+                            <option value="XL">Extra Large</option>
+                        </select>
+                        <button class="add-to-cart" data-product="${p.id}" data-name="${Utils.sanitizeInput(p.name)}" data-price="${p.price}">
+                            Add to Cart
+                        </button>
+                    </div>
+                    <div class="product-trust">
+                        <span><i class="fas fa-shield-alt"></i> Secure Payment</span>
+                        <span><i class="fas fa-undo"></i> 30-Day Returns</span>
+                    </div>
+                </div>
+            </article>
+        `;
+    }
+};
+
 // Initialize application
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize mobile and browser optimizations first
@@ -1031,6 +1184,7 @@ document.addEventListener('DOMContentLoaded', () => {
     WishlistManager.updateUI();
     UIManager.init();
     PerformanceMonitor.init();
+    ShopCatalog.init();
 
     // Add scroll animations to elements with stagger effect
     document.querySelectorAll('.collection-card, .product-card, .pillar, .testimonial-card, .achievement-card').forEach((el, index) => {

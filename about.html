@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Story - I RUN JHB | Premium South African Streetwear</title>
     <meta name="description" content="Discover I RUN JHB's story - from Johannesburg's streets to premium UMSWENKO streetwear. Learn about our mission, collections, and commitment to South African street culture.">
-    <link rel="icon" href="assets/logo/logo-gold.png" type="image/png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
     <script src="script.js" defer></script>
-    <script src="js/collections.js" defer></script>
 </head>
 
 <body>
@@ -69,10 +69,10 @@
                         <div class="story-grid">
                             <div class="story-text">
                                 <h3>Our Genesis</h3>
-                                <p>Founded in the heart of Johannesburg, I RUN JHB emerged from a deep passion for South African street culture and the vibrant energy of the City of Gold. We recognized the need for authentic streetwear that truly represents the spirit of Johannesburg's youth and their relentless hustle.</p>
-                                
+                                <p>Founded in the heart of Johannesburg, I RUN JHB emerged from a deep passion for South African street culture and the vibrant energy of the City of Gold. As told to Men's Health Magazine in August 2018, founders Neo and Wandile started the business with just R180 &mdash; the exact amount it cost to pay for the design of the logo. From that market stall beginning, the brand went on to show at South African Fashion Week, Design Indaba and Back to the City.</p>
+
                                 <h3>The UMSWENKO Philosophy</h3>
-                                <p>UMSWENKO is more than just clothing—it's a lifestyle that fuses traditional African culture with contemporary Kasi (township) trends. Our designs celebrate the rich tapestry of South African heritage while embracing the modern urban aesthetic that defines Johannesburg's street culture.</p>
+                                <p>UMSWENKO is more than just clothing—it's a lifestyle that fuses traditional African culture with contemporary Kasi (township) trends. Our designs celebrate the rich tapestry of South African heritage while embracing the modern urban aesthetic that defines Johannesburg's street culture. I RUN JHB's own stated influences include UMSWENKO and Kasi street culture, alongside South African design icons Dr. Esther Mahlangu (the celebrated Ndebele artist) and Laduma Ngxokolo (founder of MaXhosa Africa knitwear).</p>
                             </div>
                             <div class="story-visual">
                                 <div class="story-image story-image-pic1" role="img" aria-label="I RUN JHB brand story"></div>
@@ -131,10 +131,10 @@
                 <div class="product-lines">
                     <h2>Our Collections</h2>
                     <div class="collections-grid">
-                        <div class="collection-card" onclick="showCollectionTooltip('hustle')">
-                            <div class="collection-image collection-image-pic2" role="img" aria-label="Hustle Heritage Collection"></div>
+                        <a class="collection-card" href="shop.html?collection=heritage" aria-label="Shop the Heritage collection">
+                            <div class="collection-image collection-image-pic2" role="img" aria-label="Heritage Collection"></div>
                             <div class="collection-info">
-                                <h3>Hustle Heritage</h3>
+                                <h3>Heritage</h3>
                                 <p>Our flagship collection celebrating the entrepreneurial spirit of Johannesburg. Features bold graphics, traditional African patterns, and premium materials that honor our cultural roots.</p>
                                 <ul>
                                     <li>Premium hoodies and sweatshirts</li>
@@ -142,13 +142,10 @@
                                     <li>Tracksuits and joggers</li>
                                     <li>Heritage-inspired accessories</li>
                                 </ul>
-                                <div class="collection-expand-hint" title="Click to see full details">
-                                    <i class="fas fa-expand-alt"></i>
-                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="collection-card" onclick="showCollectionTooltip('city')">
+                        </a>
+
+                        <a class="collection-card" href="shop.html?collection=city" aria-label="Shop the City Dreams collection">
                             <div class="collection-image collection-image-pic4" role="img" aria-label="City Dreams Collection"></div>
                             <div class="collection-info">
                                 <h3>City Dreams</h3>
@@ -159,13 +156,10 @@
                                     <li>Casual shorts and pants</li>
                                     <li>Everyday accessories</li>
                                 </ul>
-                                <div class="collection-expand-hint" title="Click to see full details">
-                                    <i class="fas fa-expand-alt"></i>
-                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="collection-card" onclick="showCollectionTooltip('gold')">
+                        </a>
+
+                        <a class="collection-card" href="shop.html?collection=gold" aria-label="Shop the Gold Rush collection">
                             <div class="collection-image collection-image-pic6" role="img" aria-label="Gold Rush Collection"></div>
                             <div class="collection-info">
                                 <h3>Gold Rush</h3>
@@ -176,11 +170,8 @@
                                     <li>Luxury streetwear essentials</li>
                                     <li>Collector's edition items</li>
                                 </ul>
-                                <div class="collection-expand-hint" title="Click to see full details">
-                                    <i class="fas fa-expand-alt"></i>
-                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
@@ -351,13 +342,6 @@
     </footer>
 
     <!-- Collection Tooltips -->
-    <div class="tooltip-overlay" id="tooltipOverlay" onclick="closeCollectionTooltip()">
-        <div class="collection-tooltip" id="collectionTooltip" onclick="event.stopPropagation()">
-            <button class="tooltip-close" onclick="closeCollectionTooltip()">&times;</button>
-            <div id="tooltipContent"></div>
-        </div>
-    </div>
-
     <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
 </body>
