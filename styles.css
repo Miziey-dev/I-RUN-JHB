@@ -169,13 +169,16 @@ body {
     flex-shrink: 0;
 }
 
-.logo::before {
-    content: '';
-    width: 0.55rem;
-    height: 0.55rem;
-    border-radius: 50%;
-    background: var(--umswenko-gradient);
+.logo-icon {
+    height: 2.1rem;
+    width: auto;
+    object-fit: contain;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-icon {
+    transform: translateY(-2px) rotate(-4deg);
 }
 
 .logo-img {
@@ -1113,6 +1116,12 @@ body {
     letter-spacing: 1px;
     color: var(--warm-white);
     text-transform: uppercase;
+}
+
+.footer-logo {
+    height: 3.5rem;
+    width: auto;
+    margin-bottom: 0.75rem;
 }
 
 .footer-section p,
