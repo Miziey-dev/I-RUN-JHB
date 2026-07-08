@@ -126,8 +126,8 @@
     </section>
 
     <!-- As Worn By Marquee -->
-    <div class="marquee" aria-label="As worn by">
-        <div class="marquee-track">
+    <div class="marquee" role="img" aria-label="As worn by Swizz Beatz, Anthony Hamilton, AKA, Nasty C, Sho Madjozi, DJ Tira, DJ Speedsta and Bontle Modiselle">
+        <div class="marquee-track" aria-hidden="true">
             <span>AS WORN BY</span>
             <span>SWIZZ BEATZ</span>
             <span>&#9670;</span>
@@ -666,5 +666,29 @@
 
     <!-- Screen Reader Only Text -->
     <div class="sr-only" aria-live="polite" id="announcements"></div>
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal-inner">
+            <button class="close-search" id="closeSearchBtn" aria-label="Close search">&times;</button>
+            <form id="globalSearchForm" role="search" autocomplete="off">
+                <label for="globalSearchInput" class="sr-only">Search products</label>
+                <input type="text" id="globalSearchInput" placeholder="Search for tracksuits, bombers, heritage wear..." autocomplete="off">
+                <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
+            </form>
+            <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+    </div>
+
+    <!-- Account Modal -->
+    <div class="account-modal" id="accountModal">
+        <div class="account-modal-inner">
+            <button class="close-account" id="closeAccountBtn" aria-label="Close">&times;</button>
+            <img src="images/logo-runner.png" alt="" class="account-modal-icon">
+            <h3>Accounts Are Coming Soon</h3>
+            <p>We're building order history, saved addresses and faster checkout. Join our list below to be first to know when it lands.</p>
+            <button type="button" class="cta-button" id="accountNewsletterLink">Notify Me</button>
+        </div>
+    </div>
+
 </body>
 </html>

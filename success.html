@@ -650,9 +650,11 @@
                     </div>
                 `).join('');
                 
-                // Calculate and display totals
+                // Calculate and display totals (mirrors checkout.html's updateOrderSummary logic)
                 const subtotal = lastOrder.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                const shipping = subtotal >= 500 ? 0 : 50;
+                let shipping = lastOrder.shipping === 'express' ? 120 : 50;
+                if (lastOrder.payment === 'cod') shipping += 25;
+                if (subtotal >= 500) shipping = lastOrder.payment === 'cod' ? 25 : 0;
                 const tax = subtotal * 0.15;
                 const total = subtotal + shipping + tax;
                 

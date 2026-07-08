@@ -413,9 +413,20 @@ const UIManager = {
         // Cart/Wishlist close buttons
         document.getElementById('closeCartBtn')?.addEventListener('click', this.toggleCart);
         document.getElementById('closeWishlistBtn')?.addEventListener('click', this.toggleWishlist);
+        document.getElementById('closeSearchBtn')?.addEventListener('click', this.toggleSearch);
+        document.getElementById('closeAccountBtn')?.addEventListener('click', this.toggleAccount);
+        document.getElementById('accountNewsletterLink')?.addEventListener('click', () => {
+            UIManager.toggleAccount();
+            const newsletterInput = document.querySelector('.newsletter-form input[type="email"], #newsletter-email');
+            newsletterInput?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => newsletterInput?.focus(), 400);
+        });
 
         // Overlay
         document.getElementById('overlay')?.addEventListener('click', this.closeAllModals);
+
+        // Search
+        this.setupSearch();
 
         // Scroll indicator
         document.getElementById('scrollIndicator')?.addEventListener('click', () => {
@@ -520,22 +531,85 @@ const UIManager = {
     },
 
     toggleSearch() {
-        // Implement search modal
-        NotificationManager.show('Search functionality coming soon!', 'info');
+        const searchModal = document.getElementById('searchModal');
+        if (!searchModal) {
+            NotificationManager.show('Search is available from the Shop page.', 'info');
+            return;
+        }
+        searchModal.classList.toggle('active');
+        document.getElementById('overlay')?.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+        if (searchModal.classList.contains('active')) {
+            const input = document.getElementById('globalSearchInput');
+            input.value = '';
+            document.getElementById('searchSuggestions').innerHTML = '';
+            setTimeout(() => input?.focus(), 100);
+        }
+    },
+
+    setupSearch() {
+        const input = document.getElementById('globalSearchInput');
+        const form = document.getElementById('globalSearchForm');
+        const suggestions = document.getElementById('searchSuggestions');
+        if (!input || !form || !suggestions) return;
+
+        const runSearch = Utils.debounce(() => {
+            const query = input.value.toLowerCase().trim();
+            if (query.length < 2 || typeof PRODUCTS === 'undefined') {
+                suggestions.innerHTML = '';
+                return;
+            }
+            const matches = PRODUCTS.filter(p =>
+                p.name.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query)
+            ).slice(0, 5);
+
+            if (matches.length === 0) {
+                suggestions.innerHTML = `<p class="search-no-results">No products match "${Utils.sanitizeInput(input.value)}".</p>`;
+                return;
+            }
+
+            suggestions.innerHTML = matches.map(p => `
+                <a class="search-suggestion" href="product-detail.html?product=${p.id}">
+                    <img src="${p.image}" alt="" loading="lazy">
+                    <span>
+                        <strong>${Utils.sanitizeInput(p.name)}</strong>
+                        <em>${Utils.formatCurrency(p.price)}</em>
+                    </span>
+                </a>
+            `).join('');
+        }, 200);
+
+        input.addEventListener('input', runSearch);
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = input.value.trim();
+            if (query) {
+                window.location.href = `shop.html?search=${encodeURIComponent(query)}`;
+            }
+        });
     },
 
     toggleAccount() {
-        // Implement account modal
-        NotificationManager.show('Account features coming soon!', 'info');
+        const accountModal = document.getElementById('accountModal');
+        if (!accountModal) {
+            NotificationManager.show('Accounts are coming soon!', 'info');
+            return;
+        }
+        accountModal.classList.toggle('active');
+        document.getElementById('overlay')?.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
     },
 
     closeAllModals() {
         const modals = [
             document.getElementById('cartDrawer'),
             document.getElementById('wishlistDrawer'),
+            document.getElementById('searchModal'),
+            document.getElementById('accountModal'),
             document.querySelector('.nav-links')
         ];
-        
+
         modals.forEach(modal => modal?.classList.remove('open', 'active'));
         document.getElementById('overlay')?.classList.remove('active');
         document.querySelector('.menu-toggle')?.classList.remove('active');
@@ -1067,6 +1141,11 @@ const ShopCatalog = {
         if (collectionParam && ['heritage', 'city', 'gold'].includes(collectionParam)) {
             this.state.category = collectionParam;
         }
+        const searchParam = params.get('search');
+        if (searchParam) {
+            this.state.search = searchParam.toLowerCase().trim();
+            if (this.searchInput) this.searchInput.value = searchParam;
+        }
         this.categoryPills.forEach(pill => {
             pill.classList.toggle('active', pill.dataset.category === this.state.category);
             pill.setAttribute('aria-selected', pill.dataset.category === this.state.category ? 'true' : 'false');
@@ -1155,7 +1234,7 @@ const ShopCatalog = {
             <article class="product-card" data-collection="${p.category}" data-product-id="${p.id}">
                 <div class="product-image">
                     <img src="${p.image}" alt="${Utils.sanitizeInput(p.name)} - ${Utils.sanitizeInput(p.desc)}" loading="lazy">
-                    ${p.badge ? `<span class="quick-view" style="opacity:1; bottom:auto; top:1rem; left:1rem; transform:none; background:var(--umswenko-gradient); color:white;">${p.badge}</span>` : ''}
+                    ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
                     <button class="wishlist-btn" aria-label="Add to wishlist" data-product="${p.id}">
                         <i class="fas fa-heart" aria-hidden="true"></i>
                     </button>
@@ -1182,6 +1261,146 @@ const ShopCatalog = {
     }
 };
 
+const PRODUCT_FEATURES = [
+    'Premium quality streetwear fabric',
+    'Part of the UMSWENKO collection',
+    'Designed in Johannesburg, South Africa',
+    'True to size regular fit'
+];
+
+const ProductDetail = {
+    init() {
+        this.layout = document.getElementById('productDetailLayout');
+        if (!this.layout) return;
+
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get('product');
+        const product = PRODUCTS.find(p => p.id === productId);
+
+        if (!product) {
+            this.layout.innerHTML = `
+                <div class="pd-not-found">
+                    <h1>Product Not Found</h1>
+                    <p>We couldn't find the product you were looking for. It may have sold out or the link may be incorrect.</p>
+                    <a href="shop.html" class="cta-button">Back to Shop</a>
+                </div>
+            `;
+            return;
+        }
+
+        this.product = product;
+        this.selectedSize = 'M';
+        this.quantity = 1;
+
+        document.title = `${product.name} - I RUN JHB | Premium South African Streetwear`;
+        const breadcrumb = document.getElementById('pdBreadcrumbName');
+        if (breadcrumb) breadcrumb.textContent = product.name;
+        const pageTitle = document.getElementById('pdPageTitle');
+        if (pageTitle) pageTitle.textContent = document.title;
+
+        this.layout.innerHTML = `
+            <div class="pd-images">
+                <img src="${product.image}" alt="${Utils.sanitizeInput(product.name)} - ${Utils.sanitizeInput(product.desc)}" id="pdMainImage">
+                ${product.badge ? `<span class="pd-badge">${product.badge}</span>` : ''}
+            </div>
+            <div class="pd-info">
+                <span class="pd-category">${this.categoryLabel(product.category)}</span>
+                <h1>${Utils.sanitizeInput(product.name)}</h1>
+                <p class="pd-price">${Utils.formatCurrency(product.price)}</p>
+                <p class="pd-desc">${Utils.sanitizeInput(product.desc)}</p>
+
+                <div class="pd-option-group">
+                    <label for="pdSize">Size</label>
+                    <select class="size-selector" id="pdSize">
+                        <option value="S">Small</option>
+                        <option value="M" selected>Medium</option>
+                        <option value="L">Large</option>
+                        <option value="XL">Extra Large</option>
+                    </select>
+                </div>
+
+                <div class="pd-option-group">
+                    <label>Quantity</label>
+                    <div class="quantity-controls">
+                        <button type="button" id="pdQtyMinus" aria-label="Decrease quantity">-</button>
+                        <span id="pdQty">1</span>
+                        <button type="button" id="pdQtyPlus" aria-label="Increase quantity">+</button>
+                    </div>
+                </div>
+
+                <div class="pd-actions">
+                    <button class="pd-add-to-cart" id="pdAddToCart">Add to Cart</button>
+                    <button class="pd-wishlist-btn" id="pdWishlistBtn" aria-label="Add to wishlist">
+                        <i class="fas fa-heart" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <ul class="pd-features">
+                    ${PRODUCT_FEATURES.map(f => `<li><i class="fas fa-check" aria-hidden="true"></i> ${f}</li>`).join('')}
+                </ul>
+            </div>
+        `;
+
+        document.getElementById('pdSize')?.addEventListener('change', (e) => {
+            this.selectedSize = e.target.value;
+        });
+        document.getElementById('pdQtyMinus')?.addEventListener('click', () => {
+            if (this.quantity > 1) {
+                this.quantity--;
+                document.getElementById('pdQty').textContent = this.quantity;
+            }
+        });
+        document.getElementById('pdQtyPlus')?.addEventListener('click', () => {
+            this.quantity++;
+            document.getElementById('pdQty').textContent = this.quantity;
+        });
+        document.getElementById('pdAddToCart')?.addEventListener('click', () => {
+            for (let i = 0; i < this.quantity; i++) {
+                CartManager.add({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    size: this.selectedSize,
+                    image: product.image,
+                    category: product.category
+                });
+            }
+        });
+        const wishlistBtn = document.getElementById('pdWishlistBtn');
+        const syncWishlistBtn = () => {
+            const inWishlist = AppState.wishlist.some(item => item.id === product.id);
+            wishlistBtn?.classList.toggle('active', inWishlist);
+        };
+        syncWishlistBtn();
+        wishlistBtn?.addEventListener('click', () => {
+            WishlistManager.toggle({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                category: product.category
+            });
+            syncWishlistBtn();
+        });
+
+        this.renderAlsoLike(product);
+    },
+
+    categoryLabel(category) {
+        return { heritage: 'Heritage', city: 'City Dreams', gold: 'Gold Rush' }[category] || category;
+    },
+
+    renderAlsoLike(product) {
+        const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+        if (related.length === 0) return;
+        const grid = document.getElementById('alsoLikeGrid');
+        const section = document.getElementById('alsoLike');
+        if (!grid || !section) return;
+        grid.innerHTML = related.map(p => ShopCatalog.cardHTML(p)).join('');
+        section.style.display = 'block';
+    }
+};
+
 // Initialize application
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize mobile and browser optimizations first
@@ -1194,6 +1413,7 @@ document.addEventListener('DOMContentLoaded', () => {
     UIManager.init();
     PerformanceMonitor.init();
     ShopCatalog.init();
+    ProductDetail.init();
 
     // Add scroll animations to elements with stagger effect
     document.querySelectorAll('.collection-card, .product-card, .pillar, .testimonial-card, .achievement-card').forEach((el, index) => {

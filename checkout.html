@@ -524,6 +524,12 @@
             margin-top: 0.2rem;
         }
 
+        .checkbox-label input[type="checkbox"].error + .checkmark {
+            outline: 2px solid #e74c3c;
+            outline-offset: 2px;
+            border-radius: 3px;
+        }
+
         .order-summary {
             background: #f8f9fa;
             padding: 2rem;
@@ -1030,6 +1036,7 @@
                                         <span class="checkmark"></span>
                                         I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a>
                                     </label>
+                                    <span class="error-message" id="terms-error"></span>
                                 </div>
                                 
                                 <div class="step-actions">
@@ -1190,7 +1197,7 @@
         
         function initializeCheckout() {
             // Check if cart has items - allow checkout page to load even with empty cart for testing
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cart = JSON.parse(localStorage.getItem('irunjhb_cart')) || [];
             // Commented out redirect to allow viewing checkout page
             // if (cart.length === 0) {
             //     window.location.href = 'shop.html';
@@ -1447,7 +1454,7 @@
             
             // Populate items review
             const itemsReview = document.getElementById('review-items');
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cart = JSON.parse(localStorage.getItem('irunjhb_cart')) || [];
             
             itemsReview.innerHTML = cart.map(item => `
                 <div class="review-item">
@@ -1462,7 +1469,7 @@
         }
         
         function loadOrderSummary() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cart = JSON.parse(localStorage.getItem('irunjhb_cart')) || [];
             const checkoutItems = document.getElementById('checkout-items');
             
             if (cart.length === 0) {
@@ -1486,7 +1493,7 @@
         }
         
         function updateOrderSummary() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cart = JSON.parse(localStorage.getItem('irunjhb_cart')) || [];
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
             // Get shipping cost based on selected method
@@ -1550,18 +1557,33 @@
         function processOrder() {
             const submitBtn = document.getElementById('place-order-btn');
             const originalText = submitBtn.innerHTML;
-            
+
             // Show loading state
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
             submitBtn.disabled = true;
-            
+
+            // Capture order details before the cart is cleared
+            const cart = JSON.parse(localStorage.getItem('irunjhb_cart')) || [];
+            const shippingMethod = document.querySelector('input[name="shipping"]:checked');
+            const paymentMethod = document.querySelector('input[name="payment"]:checked');
+            localStorage.setItem('lastOrder', JSON.stringify({
+                items: cart,
+                shipping: shippingMethod ? shippingMethod.value : 'standard',
+                payment: paymentMethod ? paymentMethod.value : 'card'
+            }));
+            localStorage.setItem('selectedShipping', shippingMethod ? shippingMethod.value : 'standard');
+
             // Simulate order processing
             setTimeout(() => {
                 const orderNumber = 'IRJ' + Date.now().toString().slice(-8);
-                
+
                 // Clear cart
-                localStorage.removeItem('cart');
-                
+                if (window.CartManager) {
+                    window.CartManager.clear();
+                } else {
+                    localStorage.removeItem('irunjhb_cart');
+                }
+
                 // Redirect to success page
                 window.location.href = `success.html?order=${orderNumber}`;
             }, 3000);
