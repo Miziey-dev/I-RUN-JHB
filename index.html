@@ -26,10 +26,8 @@
     <meta name="twitter:image" content="https://www.irunjhb.com/images/og-image.jpg">
     
     <!-- Favicon -->
-    <link rel="icon" href="images/logo.jpg" type="image/jpeg">
-
-    
-    <link rel="apple-touch-icon" href="images/logo.jpg">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.irunjhb.com">
@@ -48,17 +46,17 @@
         "@type": "ClothingStore",
         "name": "I RUN JHB",
         "url": "https://www.irunjhb.com",
-        "logo": "https://www.irunjhb.com/assets/logo/logo-gold.png",
+        "logo": "https://www.irunjhb.com/images/apple-touch-icon.png",
         "description": "Premium South African streetwear celebrating Johannesburg's hustle culture and African heritage",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "The Space, GF 07, 177 The Zone, Melrose",
+            "streetAddress": "The Space, GF 07, 177 The Zone, Oxford Rd, Rosebank",
             "addressLocality": "Johannesburg",
             "postalCode": "2196",
             "addressCountry": "ZA"
         },
         "telephone": "+27785616050",
-        "email": "info@irunjozi.co.za",
+        "email": "irunjozi@gmail.com",
         "sameAs": [
             "https://www.facebook.com/IRUNJHB/",
             "https://www.instagram.com/irunjozi/",
@@ -74,9 +72,7 @@
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <div class="logo-container">
-                <a href="#home" class="logo" aria-label="I RUN JHB Home">
-                    <img src="images/logo.jpg" alt="I RUN JHB" class="logo-img">
-                </a>
+                <a href="#home" class="logo" aria-label="I RUN JHB Home"><img src="images/logo-runner.png" alt="" class="logo-icon"><span>I RUN JHB</span></a>
             </div>
             
             <ul class="nav-links" role="menubar">
@@ -117,9 +113,10 @@
     <section class="hero" id="home" aria-label="Hero section">
         <div class="hero-content">
             <h1 class="hero-title">UMSWENKO</h1>
-            <p class="hero-tagline">Authentic South African Street Culture</p>
+            <div class="hero-title-bar"></div>
+            <p class="hero-tagline">Johannesburg's Hustle, <span class="script-accent">Worn Loud</span></p>
             <p class="hero-description">
-                Fusing South African Traditional Culture with Kasi Street Culture. Premium streetwear that celebrates our heritage, from Zulu and Xhosa traditions to township street trends.
+                Nine South African cultures. One Kasi attitude. I RUN JHB fuses IsiZulu, IsiXhosa, IsiSwati, IsiNdebele, Sepedi, Sesotho, Setswana, Xitsonga and TshiVenda tradition with township street trends to create UMSWENKO &mdash; premium streetwear worn from the streets of Braamfontein to South African Fashion Week.
             </p>
             <a href="shop.html" class="cta-button" aria-label="Shop our collection">Shop Now</a>
         </div>
@@ -128,13 +125,54 @@
         </button>
     </section>
 
+    <!-- As Worn By Marquee -->
+    <div class="marquee" role="img" aria-label="As worn by Swizz Beatz, Anthony Hamilton, AKA, Nasty C, Sho Madjozi, DJ Tira, DJ Speedsta and Bontle Modiselle">
+        <div class="marquee-track" aria-hidden="true">
+            <span>AS WORN BY</span>
+            <span>SWIZZ BEATZ</span>
+            <span>&#9670;</span>
+            <span>ANTHONY HAMILTON</span>
+            <span>&#9670;</span>
+            <span>AKA</span>
+            <span>&#9670;</span>
+            <span>NASTY C</span>
+            <span>&#9670;</span>
+            <span>SHO MADJOZI</span>
+            <span>&#9670;</span>
+            <span>DJ TIRA</span>
+            <span>&#9670;</span>
+            <span>DJ SPEEDSTA</span>
+            <span>&#9670;</span>
+            <span>BONTLE MODISELLE</span>
+            <span>&#9670;</span>
+            <span>AS WORN BY</span>
+            <span>SWIZZ BEATZ</span>
+            <span>&#9670;</span>
+            <span>ANTHONY HAMILTON</span>
+            <span>&#9670;</span>
+            <span>AKA</span>
+            <span>&#9670;</span>
+            <span>NASTY C</span>
+            <span>&#9670;</span>
+            <span>SHO MADJOZI</span>
+            <span>&#9670;</span>
+            <span>DJ TIRA</span>
+            <span>&#9670;</span>
+            <span>DJ SPEEDSTA</span>
+            <span>&#9670;</span>
+            <span>BONTLE MODISELLE</span>
+            <span>&#9670;</span>
+        </div>
+    </div>
+
     <!-- Collections Section -->
     <section class="collections" id="collections" aria-label="Our collections">
         <div class="container">
             <h2 class="section-title">The Three Pillars of UMSWENKO</h2>
             <div class="collections-grid">
                 <article class="collection-card" data-collection="heritage">
-                    <img src="images/Hero.jpg" alt="Heritage Collection - Traditional African patterns meet modern streetwear" loading="lazy">
+                    <span class="collection-number">01</span>
+                    <img src="images/collection-heritage.jpg" alt="Heritage Collection - Traditional African patterns meet modern streetwear" loading="lazy">
                     <div class="collection-content">
                         <h3>Heritage Collection</h3>
                         <p>Where African tradition meets Johannesburg's relentless ambition. Premium pieces that honor our roots while embracing the future.</p>
@@ -143,7 +181,8 @@
                 </article>
                 
                 <article class="collection-card" data-collection="city">
-                    <img src="images/Pic1.jpg" alt="City Dreams Collection - Urban essentials for modern achievers" loading="lazy">
+                    <span class="collection-number">02</span>
+                    <img src="images/hero-alt.jpg" alt="City Dreams Collection - Urban essentials for modern achievers" loading="lazy">
                     <div class="collection-content">
                         <h3>City Dreams</h3>
                         <p>Urban essentials for the dreamers and achievers. Sophisticated streetwear for those who run the city.</p>
@@ -152,7 +191,8 @@
                 </article>
                 
                 <article class="collection-card" data-collection="gold">
-                    <img src="images/Pic2.jpg" alt="Gold Rush Collection - Limited edition luxury streetwear" loading="lazy">
+                    <span class="collection-number">03</span>
+                    <img src="images/collection-gold.jpg" alt="Gold Rush Collection - Limited edition luxury streetwear" loading="lazy">
                     <div class="collection-content">
                         <h3>Gold Rush</h3>
                         <p>Limited edition luxury pieces inspired by Johannesburg's golden legacy. Exclusivity redefined.</p>
@@ -178,7 +218,7 @@
             <div class="products-grid" id="products-grid" role="tabpanel" aria-label="Product grid">
                 <article class="product-card" data-collection="heritage" data-product-id="heritage-hoodie">
                     <div class="product-image">
-                        <img src="images/pic1.jpg" alt="Heritage Hoodie - Black hoodie with traditional African patterns" loading="lazy">
+                        <img src="images/collection-heritage.jpg" alt="Heritage Hoodie - Black hoodie with traditional African patterns" loading="lazy">
                         <button class="wishlist-btn" aria-label="Add to wishlist" data-product="heritage-hoodie">
                             <i class="fas fa-heart" aria-hidden="true"></i>
                         </button>
@@ -199,16 +239,12 @@
                                 Add to Cart
                             </button>
                         </div>
-                        <div class="product-trust">
-                            <span><i class="fas fa-shield-alt"></i> Secure Payment</span>
-                            <span><i class="fas fa-undo"></i> 30-Day Returns</span>
-                        </div>
                     </div>
                 </article>
                 
                 <article class="product-card" data-collection="city" data-product-id="city-dreams-tee">
                     <div class="product-image">
-                        <img src="images/pic3.jpg" alt="City Dreams Tee - Urban style t-shirt with city graphics" loading="lazy">
+                        <img src="images/product-friends-bags.jpg" alt="City Dreams Tee - Urban style t-shirt with city graphics" loading="lazy">
                         <button class="wishlist-btn" aria-label="Add to wishlist" data-product="city-dreams-tee">
                             <i class="fas fa-heart" aria-hidden="true"></i>
                         </button>
@@ -229,16 +265,12 @@
                                 Add to Cart
                             </button>
                         </div>
-                        <div class="product-trust">
-                            <span><i class="fas fa-shield-alt"></i> Secure Payment</span>
-                            <span><i class="fas fa-undo"></i> 30-Day Returns</span>
-                        </div>
                     </div>
                 </article>
                 
                 <article class="product-card" data-collection="gold" data-product-id="gold-rush-bomber">
                     <div class="product-image">
-                        <img src="images/pic5.jpg" alt="Gold Rush Bomber - Premium bomber jacket with gold accents" loading="lazy">
+                        <img src="images/collection-gold.jpg" alt="Gold Rush Bomber - Premium bomber jacket with gold accents" loading="lazy">
                         <button class="wishlist-btn" aria-label="Add to wishlist" data-product="gold-rush-bomber">
                             <i class="fas fa-heart" aria-hidden="true"></i>
                         </button>
@@ -258,10 +290,6 @@
                             <button class="add-to-cart" data-product="gold-rush-bomber" data-name="Gold Rush Bomber" data-price="1299">
                                 Add to Cart
                             </button>
-                        </div>
-                        <div class="product-trust">
-                            <span><i class="fas fa-shield-alt"></i> Secure Payment</span>
-                            <span><i class="fas fa-undo"></i> 30-Day Returns</span>
                         </div>
                     </div>
                 </article>
@@ -319,68 +347,55 @@
                     <h3>Men's Health Magazine</h3>
                     <p>4-page spread feature August 2018</p>
                 </div>
+                <div class="achievement-card">
+                    <h3>AKA &amp; Nasty C</h3>
+                    <p>Seen wearing I RUN JHB in the music video for "Lemon (Lemonade)"</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Celebrity Endorsements Section -->
-    <section class="celebrities" aria-label="Celebrity endorsements">
+    <section class="icons-section" aria-label="Celebrity endorsements">
         <div class="container">
-            <h2 class="section-title">Worn by the Stars</h2>
-            <div class="celebrities-grid">
-                <div class="celebrity-section">
-                    <h3>International Superstars</h3>
-                    <div class="celebrity-list">
-                        <div class="celebrity-item">
-                            <img src="images/Celeb1.jpg" alt="Swizz Beatz" class="celebrity-image">
-                            <div class="celebrity-info">
-                                <strong>Swizz Beatz</strong>
-                                <span>Producer/Rapper</span>
-                            </div>
-                        </div>
-                        <div class="celebrity-item">
-                            <img src="images/Celeb2.jpg" alt="Anthony Hamilton" class="celebrity-image">
-                            <div class="celebrity-info">
-                                <strong>Anthony Hamilton</strong>
-                                <span>R&B Musician</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="celebrity-section">
-                    <h3>Local Superstars</h3>
-                    <div class="celebrity-list">
-                        <div class="celebrity-item">
-                            <img src="images/Celeb3.jpg" alt="Sho Madjozi" class="celebrity-image">
-                            <div class="celebrity-info">
-                                <strong>Sho Madjozi</strong>
-                                <span>John Cena Song Artist</span>
-                            </div>
-                        </div>
-                        <div class="celebrity-item">
-                            <img src="images/Celeb4.jpg" alt="DJ Tira" class="celebrity-image">
-                            <div class="celebrity-info">
-                                <strong>DJ Tira</strong>
-                                <span>Super Producer & Musician</span>
-                            </div>
-                        </div>
-                        <div class="celebrity-item">
-                            <img src="images/Celeb5.jpg" alt="DJ Speedsta" class="celebrity-image">
-                            <div class="celebrity-info">
-                                <strong>DJ Speedsta</strong>
-                                <span>Hip Hop Producer & TV/Radio Personality</span>
-                            </div>
-                        </div>
-                        <div class="celebrity-item">
-                            <img src="images/wandile.jpg" alt="Bontle Modiselle" class="celebrity-image">
-                            <div class="celebrity-info">
-                                <strong>Bontle Modiselle</strong>
-                                <span>TV Presenter & Model</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <span class="eyebrow">Worn By</span>
+            <h2 class="section-title">Icons of the Culture</h2>
+            <p class="icons-intro">From global hip-hop royalty to South Africa's biggest names in music and television &mdash; UMSWENKO runs with the stars.</p>
+            <div class="icons-grid">
+                <figure class="icon-card">
+                    <img src="images/celeb-swizzbeats.jpg" alt="Swizz Beatz wearing I RUN JHB" loading="lazy">
+                    <figcaption><strong>Swizz Beatz</strong><span>Producer / Rapper</span></figcaption>
+                </figure>
+                <figure class="icon-card">
+                    <img src="images/celeb-anthonyhamilton.jpg" alt="Anthony Hamilton wearing I RUN JHB" loading="lazy">
+                    <figcaption><strong>Anthony Hamilton</strong><span>R&amp;B Musician</span></figcaption>
+                </figure>
+                <figure class="icon-card">
+                    <img src="images/celeb-shomadjozi.jpg" alt="Sho Madjozi performing in I RUN JHB" loading="lazy">
+                    <figcaption><strong>Sho Madjozi</strong><span>Musician, "John Cena"</span></figcaption>
+                </figure>
+                <figure class="icon-card">
+                    <img src="images/celeb-djtira.jpg" alt="DJ Tira wearing I RUN JHB" loading="lazy">
+                    <figcaption><strong>DJ Tira</strong><span>Super Producer &amp; Musician</span></figcaption>
+                </figure>
+                <figure class="icon-card">
+                    <img src="images/celeb-djspeedsta.jpg" alt="DJ Speedsta wearing I RUN JHB" loading="lazy">
+                    <figcaption><strong>DJ Speedsta</strong><span>Hip Hop Producer &amp; TV/Radio Personality</span></figcaption>
+                </figure>
+                <figure class="icon-card">
+                    <img src="images/celeb-bontlemodiselle.jpg" alt="Bontle Modiselle wearing I RUN JHB" loading="lazy">
+                    <figcaption><strong>Bontle Modiselle</strong><span>TV Presenter &amp; Performer</span></figcaption>
+                </figure>
+                <figure class="icon-card">
+                    <img src="images/celeb-kimjayde.jpg" alt="KimJayde wearing I RUN JHB" loading="lazy">
+                    <figcaption><strong>KimJayde</strong><span>MTV Base Presenter</span></figcaption>
+                </figure>
+                <figure class="icon-card">
+                    <img src="images/celeb-kgbizizi.jpg" alt="KG and Bizizi wearing I RUN JHB" loading="lazy">
+                    <figcaption><strong>KG &amp; Bizizi</strong><span>Kokota Piano Hitmakers</span></figcaption>
+                </figure>
             </div>
+            <p class="icons-footnote">Also seen on AKA &amp; Nasty C in the "Lemon (Lemonade)" music video.</p>
         </div>
     </section>
 
@@ -403,45 +418,24 @@
         </div>
     </section>
 
-    <!-- Customer Testimonials -->
-    <section class="testimonials" aria-label="Customer testimonials">
+    <!-- Origin Story -->
+    <section class="testimonials" aria-label="I RUN JHB origin story">
         <div class="container">
-            <h2 class="section-title">What Our Customers Say</h2>
+            <h2 class="section-title">Started With R180</h2>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">The quality is incredible! My Heritage Hoodie has become my go-to piece. The African patterns are beautifully crafted and the fit is perfect.</p>
-                    <div class="testimonial-author">Thabo M. - Johannesburg</div>
+                    <p class="testimonial-text">"We started our business with R180, which was the money we used to pay for the design of our logo."</p>
+                    <div class="testimonial-author">Founders, I RUN JHB &mdash; Men's Health Magazine, August 2018</div>
                 </div>
-                
+
                 <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">Finally, streetwear that represents our culture authentically. I RUN JHB gets it right - premium quality with real South African soul.</p>
-                    <div class="testimonial-author">Nomsa K. - Cape Town</div>
+                    <p class="testimonial-text">From a Johannesburg CBD market stall to the runways of South African Fashion Week &mdash; every piece we cut is still built on that same hustle.</p>
+                    <div class="testimonial-author">The UMSWENKO Philosophy</div>
                 </div>
-                
+
                 <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">Ordered online and delivery was super fast. The Gold Rush bomber is pure fire - worth every rand. Customer service was excellent too.</p>
-                    <div class="testimonial-author">Sipho D. - Durban</div>
+                    <p class="testimonial-text">Our influences run deep: UMSWENKO and Kasi street culture, alongside South African design icons like Ndebele artist Dr. Esther Mahlangu and knitwear designer Laduma Ngxokolo.</p>
+                    <div class="testimonial-author">I RUN JHB Influences</div>
                 </div>
             </div>
         </div>
@@ -453,20 +447,20 @@
             <h2 class="section-title">As Seen In</h2>
             <div class="press-grid">
                 <div class="press-item">
-                    <img src="images/Celeb1.jpg" alt="Men's Health Magazine" class="press-image">
+                    <img src="images/press-menshealth.jpg" alt="Men's Health Magazine feature on I RUN JHB, August 2018" class="press-image">
                     <div class="press-logo">Men's Health</div>
                 </div>
                 <div class="press-item">
-                    <img src="images/Celeb2.jpg" alt="Design Indaba" class="press-image">
+                    <img src="images/press-designindaba.jpg" alt="Design Indaba Emerging Creatives 2018 newspaper feature" class="press-image">
                     <div class="press-logo">Design Indaba</div>
                 </div>
                 <div class="press-item">
-                    <img src="images/Celeb3.jpg" alt="SA Fashion Week" class="press-image">
+                    <img src="images/press-safashionweek.jpg" alt="South African Fashion Week runway showcase" class="press-image">
                     <div class="press-logo">SA Fashion Week</div>
                 </div>
                 <div class="press-item">
-                    <img src="images/Celeb4.jpg" alt="Back to the City Festival" class="press-image">
-                    <div class="press-logo">Back to the City</div>
+                    <img src="images/press-yfm.jpg" alt="I RUN JHB interview at Y FM 99.2" class="press-image">
+                    <div class="press-logo">Y FM 99.2</div>
                 </div>
             </div>
         </div>
@@ -476,6 +470,7 @@
     <section class="instagram-feed" aria-label="Instagram feed">
         <div class="container">
             <h2 class="section-title">Follow @irunjozi</h2>
+            <p style="text-align:center; color: var(--text-gray); margin-top: -1.5rem; margin-bottom: 2rem;">Join 10,500+ on Facebook, 3,100+ on Instagram and 1,600+ on X.</p>
             <div class="instagram-grid">
                 <div class="instagram-post">
                     <img src="images/pic1.jpg" alt="Instagram post" loading="lazy">
@@ -534,16 +529,16 @@
             </div>
             <div style="text-align: center; margin-top: 2rem;">
                 <a href="https://www.instagram.com/irunjozi/" target="_blank" class="cta-button">
-                    <i class="fab fa-instagram"></i> Follow Us
+                    <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg> Follow Us
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Final CTA Section -->
-    <section class="final-cta" style="padding: 4rem 2rem; background: linear-gradient(135deg, var(--primary-black), #2a2a2a); text-align: center; color: white;">
+    <section class="final-cta" style="padding: 4rem 2rem; background: linear-gradient(135deg, var(--primary-black), #2a2a2a); border-top: 3px solid var(--gold-accent); text-align: center; color: white;">
         <div class="container">
-            <h2 style="font-family: Georgia, serif; font-size: 2.5rem; margin-bottom: 1rem; color: var(--gold-accent);">Ready to Run Johannesburg?</h2>
+            <h2 style="font-family: Georgia, serif; font-size: 2.5rem; margin-bottom: 1rem; color: var(--umswenko-amapiano);">Ready to Run Johannesburg?</h2>
             <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">Join the UMSWENKO movement. Premium streetwear that celebrates our heritage.</p>
             <div class="btn-group">
                 <a href="shop.html" class="btn btn-primary">
@@ -561,20 +556,21 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
+                    <img src="images/logo-runner-white.png" alt="I RUN JHB" class="footer-logo">
                     <h3>I RUN JHB</h3>
                     <p>Premium South African streetwear celebrating Johannesburg's hustle culture and African heritage.</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/IRUNJHB/" target="_blank" rel="noopener" aria-label="Follow us on Facebook">
-                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                            <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.505 17.523 2 12 2S2 6.505 2 12.06c0 5.02 3.657 9.184 8.438 9.94v-7.03H7.898v-2.91h2.54V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562v1.878h2.773l-.443 2.91h-2.33v7.03C18.343 21.244 22 17.08 22 12.06z"/></svg>
                         </a>
                         <a href="https://www.instagram.com/irunjozi/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
-                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                            <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                         </a>
                         <a href="https://x.com/IRUNJHB/" target="_blank" rel="noopener" aria-label="Follow us on Twitter">
-                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                            <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                         </a>
                         <a href="https://www.tiktok.com/@irunjhb" target="_blank" rel="noopener" aria-label="Follow us on TikTok">
-                            <i class="fab fa-tiktok" aria-hidden="true"></i>
+                            <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82a4.278 4.278 0 01-1.06-2.82h-3.09v12.4a2.592 2.592 0 01-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 004.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
                         </a>
                     </div>
                 </div>
@@ -670,5 +666,29 @@
 
     <!-- Screen Reader Only Text -->
     <div class="sr-only" aria-live="polite" id="announcements"></div>
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal-inner">
+            <button class="close-search" id="closeSearchBtn" aria-label="Close search">&times;</button>
+            <form id="globalSearchForm" role="search" autocomplete="off">
+                <label for="globalSearchInput" class="sr-only">Search products</label>
+                <input type="text" id="globalSearchInput" placeholder="Search for tracksuits, bombers, heritage wear..." autocomplete="off">
+                <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
+            </form>
+            <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+    </div>
+
+    <!-- Account Modal -->
+    <div class="account-modal" id="accountModal">
+        <div class="account-modal-inner">
+            <button class="close-account" id="closeAccountBtn" aria-label="Close">&times;</button>
+            <img src="images/logo-runner.png" alt="" class="account-modal-icon">
+            <h3>Accounts Are Coming Soon</h3>
+            <p>We're building order history, saved addresses and faster checkout. Join our list below to be first to know when it lands.</p>
+            <button type="button" class="cta-button" id="accountNewsletterLink">Notify Me</button>
+        </div>
+    </div>
+
 </body>
 </html>

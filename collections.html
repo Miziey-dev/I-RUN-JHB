@@ -1,169 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Collections | I RUN JHB</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore premium streetwear collections from I RUN JHB.">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="assets/logo/logo-gold.png">
-  <meta property="og:title" content="Collections | I RUN JHB - Premium South African Streetwear">
-  <meta property="og:description" content="Explore premium streetwear collections from I RUN JHB - Windbreaker, City Dreams, Gold Rush, and Colours of Confidence.">
-  <meta property="og:image" content="assets/img/product-1.jpg">
-  <meta property="og:url" content="https://www.irunjhb.com/collections.html">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Collections | I RUN JHB">
-  <meta name="twitter:description" content="Explore premium streetwear collections from I RUN JHB.">
-  <meta name="twitter:image" content="assets/img/product-1.jpg">
-  <link rel="stylesheet" href="global-styles.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="header-fixes.css">
-  <link rel="stylesheet" href="responsive.css">
-  <link rel="stylesheet" href="size-guide-styles.css">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    crossorigin="anonymous" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections - I RUN JHB | Premium South African Streetwear</title>
+    <meta name="description" content="Explore the Heritage, City Dreams and Gold Rush collections from I RUN JHB - premium South African streetwear.">
+    <link rel="canonical" href="https://www.irunjhb.com/collections.html">
+    <meta property="og:title" content="Collections - I RUN JHB">
+    <meta property="og:description" content="Explore the Heritage, City Dreams and Gold Rush collections from I RUN JHB.">
+    <meta property="og:image" content="https://www.irunjhb.com/images/collection-heritage.jpg">
+    <meta property="og:url" content="https://www.irunjhb.com/collections.html">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-  <header>
-    <nav aria-label="Main navigation">
-      <a href="index.html" class="logo-link" aria-label="Home">
-        <img src="assets/logo/logo-gold.png" alt="I RUN JHB Logo" class="logo-img" />
-      </a>
-      <ul class="nav-links">
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="collections.html" aria-current="page">Collections</a></li>
-        <li><a href="lookbook.html">Lookbook</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="search-icon" aria-label="Search products" id="searchBtn"><i class="fa fa-search"></i></button>
-        <button class="user-icon" aria-label="Account" id="accountBtn"><i class="fa fa-user"></i></button>
-        <button class="cart-icon" aria-label="Open shopping cart" id="cartBtn"><i class="fa fa-shopping-cart"></i>
-        </button>
-        <button class="wishlist-icon" aria-label="Open wishlist" id="wishlistBtn"><i class="fa fa-heart"></i></button>
-        <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">☰</button>
-      </div>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html" class="logo"><img src="images/logo-runner.png" alt="" class="logo-icon"><span>I RUN JHB</span></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="collections.html" class="active">Collections</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="lookbook.html">Lookbook</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="search-icon" aria-label="Search products" id="searchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="account-icon" aria-label="Account" id="accountBtn">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="cart-icon" aria-label="Open shopping cart" id="cartBtn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="wishlist-icon" aria-label="Open wishlist" id="wishlistBtn">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </button>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <h1>Our Collections</h1>
-      <p>Discover the latest drops and exclusive lines from I RUN JHB.</p>
-    </section>
-    <section class="collections-grid" aria-label="Collections">
-      <div class="collection-card premium-frame" data-href="shop.html?collection=windbreaker" tabindex="0"
-        aria-label="Windbreaker Collection">
-        <img src="assets/img/product-1.jpg" alt="Windbreaker Collection - Premium streetwear jackets and outerwear" loading="lazy" width="300" height="400" />
-        <h2>Windbreaker</h2>
-      </div>
-      <div class="collection-card premium-frame" data-href="shop.html?collection=citydreams" tabindex="0"
-        aria-label="City Dreams Collection">
-        <img src="assets/img/product-2.jpg" alt="City Dreams Collection - Urban streetwear for city dreamers" loading="lazy" width="300" height="400" />
-        <h2>City Dreams</h2>
-      </div>
-      <div class="collection-card premium-frame" data-href="shop.html?collection=goldrush" tabindex="0"
-        aria-label="Gold Rush Collection">
-        <img src="assets/img/product-1.jpg" alt="Gold Rush Collection - Limited edition luxury streetwear" loading="lazy" width="300" height="400" />
-        <h2>Gold Rush</h2>
-      </div>
-      <div class="collection-card premium-frame" data-href="shop.html?collection=coloursOFConfidence" tabindex="0"
-        aria-label="Colours of Confidence Collection">
-        <img src="assets/img/product-2.jpg" alt="Colours of Confidence Collection - Vibrant streetwear celebrating self-expression" loading="lazy" width="300" height="400" />
-        <h2>Colours of Confidence</h2>
-      </div>
-    </section>
-  </main>
+    <main>
+        <section class="page-hero">
+            <div class="hero-content">
+                <h1>Our Collections</h1>
+                <p>Three pillars of UMSWENKO - discover the latest drops and exclusive lines from I RUN JHB.</p>
+            </div>
+        </section>
 
-  <!-- Modals and overlays -->
-  <div class="cart-modal modal" id="cartModal" aria-hidden="true">
-    <button class="close-cart" aria-label="Close cart" id="closeCartBtn">&times;</button>
-    <h2>Your Cart</h2>
-    <!-- Cart content here -->
-    <a href="shop.html" class="continue-shopping" id="continueShoppingCart">Continue Shopping</a>
-    <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
-  </div>
-  <div class="wishlist-modal modal" id="wishlistModal" aria-hidden="true">
-    <button class="close-cart" aria-label="Close wishlist" id="closeWishlistBtn">&times;</button>
-    <h2>Your Wishlist</h2>
-    <!-- Wishlist content here -->
-    <a href="shop.html" class="continue-shopping" id="continueShoppingWishlist">Continue Shopping</a>
-  </div>
-  <div class="search-modal modal" id="searchModal" aria-hidden="true">
-    <button class="close-search" aria-label="Close search" id="closeSearchBtn">&times;</button>
-    <h2>Search</h2>
-    <!-- Search form here -->
-  </div>
-  <div class="account-modal modal" id="accountModal" aria-hidden="true">
-    <button class="modal-close" aria-label="Close account modal" id="closeAccountBtn">&times;</button>
-    <h2>Account</h2>
-    <!-- Account form here -->
-    <p class="account-link">Don't have an account? <a href="#" class="switchTab" data-tab="register">Sign up</a>
-    </p>
-    <p class="account-link">Already have an account? <a href="#" class="switchTab" data-tab="login">Login</a>
-    </p>
-  </div>
-  <div class="overlay" id="overlay"></div>
+        <section class="collections" aria-label="Collections">
+            <div class="container">
+                <div class="collections-grid">
+                    <a class="collection-card" href="shop.html?collection=heritage" aria-label="Shop the Heritage collection">
+                        <img src="images/collection-heritage.jpg" alt="Heritage Collection - Traditional African patterns meet modern streetwear" loading="lazy">
+                        <div class="collection-content">
+                            <h3>Heritage</h3>
+                            <p>Where African tradition meets Johannesburg's relentless ambition.</p>
+                            <span class="collection-link">Shop Heritage</span>
+                        </div>
+                    </a>
+                    <a class="collection-card" href="shop.html?collection=city" aria-label="Shop the City Dreams collection">
+                        <img src="images/hero-alt.jpg" alt="City Dreams Collection - Urban essentials for modern achievers" loading="lazy">
+                        <div class="collection-content">
+                            <h3>City Dreams</h3>
+                            <p>Urban essentials for the dreamers and achievers who run the city.</p>
+                            <span class="collection-link">Shop City Dreams</span>
+                        </div>
+                    </a>
+                    <a class="collection-card" href="shop.html?collection=gold" aria-label="Shop the Gold Rush collection">
+                        <img src="images/collection-gold.jpg" alt="Gold Rush Collection - Limited edition luxury streetwear" loading="lazy">
+                        <div class="collection-content">
+                            <h3>Gold Rush</h3>
+                            <p>Limited edition luxury pieces inspired by Johannesburg's golden legacy.</p>
+                            <span class="collection-link">Shop Gold Rush</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
-  <footer>
-    <p>&copy; 2025 I RUN JHB. All rights reserved.</p>
-    <nav aria-label="Footer navigation">
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="returns-exchanges.html">Returns & Exchanges</a>
-      <a href="shipping-info.html">Shipping Info</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </footer>
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" aria-label="Close cart" id="closeCartBtn">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <p>Your cart is empty</p>
+                <a href="shop.html" class="continue-shopping">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
 
-  <!-- Scripts -->
-  <script src="js/security.js" defer></script>
-  <script src="script.js" defer></script>
-  <script src="js/cart.js" defer></script>
-  <script src="js/products.js" defer></script>
-  <script src="js/wishlist.js" defer></script>
-  <script src="js/forms.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Navigation actions
-      document.getElementById('searchBtn').addEventListener('click', toggleSearch);
-      document.getElementById('accountBtn').addEventListener('click', toggleAccount);
-      document.getElementById('wishlistBtn').addEventListener('click', toggleWishlist);
-      document.getElementById('cartBtn').addEventListener('click', toggleCart);
-      document.getElementById('menuToggle').addEventListener('click', toggleMobileMenu);
-      document.getElementById('closeCartBtn').addEventListener('click', toggleCart);
-      document.getElementById('closeWishlistBtn').addEventListener('click', toggleWishlist);
-      document.getElementById('closeSearchBtn').addEventListener('click', toggleSearch);
-      document.getElementById('closeAccountBtn').addEventListener('click', toggleAccount);
-      document.getElementById('continueShoppingCart').addEventListener('click', function (e) { e.preventDefault(); toggleCart(); });
-      document.getElementById('continueShoppingWishlist').addEventListener('click', function (e) { e.preventDefault(); toggleWishlist(); });
-      document.getElementById('checkoutBtn').addEventListener('click', function () { window.location.href = 'checkout.html'; });
-      document.getElementById('overlay').addEventListener('click', closeAllModals);
+    <!-- Wishlist Drawer -->
+    <div class="wishlist-drawer" id="wishlistDrawer">
+        <div class="wishlist-header">
+            <h3>Wishlist</h3>
+            <button class="close-wishlist" aria-label="Close wishlist" id="closeWishlistBtn">&times;</button>
+        </div>
+        <div class="wishlist-items" id="wishlistItems">
+            <div class="wishlist-empty">
+                <p>Your wishlist is empty</p>
+                <a href="shop.html" class="continue-shopping">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
 
-      // Collection card navigation
-      document.querySelectorAll('.collection-card[data-href]').forEach(function (card) {
-        card.addEventListener('click', function () {
-          window.location.href = card.getAttribute('data-href');
-        });
-        card.addEventListener('keypress', function (e) {
-          if (e.key === 'Enter' || e.key === ' ') {
-            window.location.href = card.getAttribute('data-href');
-          }
-        });
-      });
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="images/logo-runner-white.png" alt="I RUN JHB" class="footer-logo">
+                    <h3>I RUN JHB</h3>
+                    <p>Premium South African streetwear celebrating Johannesburg's hustle culture and African heritage.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/IRUNJHB/" target="_blank" rel="noopener" aria-label="Follow us on Facebook">
+                            <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.505 17.523 2 12 2S2 6.505 2 12.06c0 5.02 3.657 9.184 8.438 9.94v-7.03H7.898v-2.91h2.54V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562v1.878h2.773l-.443 2.91h-2.33v7.03C18.343 21.244 22 17.08 22 12.06z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/irunjozi/" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                            <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                        <a href="https://x.com/IRUNJHB/" target="_blank" rel="noopener" aria-label="Follow us on Twitter">
+                            <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@irunjhb" target="_blank" rel="noopener" aria-label="Follow us on TikTok">
+                            <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82a4.278 4.278 0 01-1.06-2.82h-3.09v12.4a2.592 2.592 0 01-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 004.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
+                        </a>
+                    </div>
+                </div>
 
-      // Account tab switching
-      document.querySelectorAll('.switchTab').forEach(function (link) {
-        link.addEventListener('click', function (e) {
-          e.preventDefault();
-          switchTab(link.getAttribute('data-tab'));
-        });
-      });
-    });
-  </script>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <nav>
+                        <a href="index.html">Home</a>
+                        <a href="shop.html">Shop</a>
+                        <a href="about.html">About</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Customer Care</h3>
+                    <nav>
+                        <a href="shipping-info.html">Shipping Info</a>
+                        <a href="returns-exchanges.html">Returns & Exchanges</a>
+                        <a href="care-instructions.html">Care Instructions</a>
+                        <a href="faq.html">FAQ</a>
+                    </nav>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with our latest drops and exclusive offers.</p>
+                    <form class="newsletter-form" id="newsletterForm" novalidate>
+                        <input type="email" name="email" placeholder="Enter your email" required autocomplete="email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 I RUN JHB. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal-inner">
+            <button class="close-search" id="closeSearchBtn" aria-label="Close search">&times;</button>
+            <form id="globalSearchForm" role="search" autocomplete="off">
+                <label for="globalSearchInput" class="sr-only">Search products</label>
+                <input type="text" id="globalSearchInput" placeholder="Search for tracksuits, bombers, heritage wear..." autocomplete="off">
+                <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
+            </form>
+            <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+    </div>
+
+    <!-- Account Modal -->
+    <div class="account-modal" id="accountModal">
+        <div class="account-modal-inner">
+            <button class="close-account" id="closeAccountBtn" aria-label="Close">&times;</button>
+            <img src="images/logo-runner.png" alt="" class="account-modal-icon">
+            <h3>Accounts Are Coming Soon</h3>
+            <p>We're building order history, saved addresses and faster checkout. Join our list below to be first to know when it lands.</p>
+            <button type="button" class="cta-button" id="accountNewsletterLink">Notify Me</button>
+        </div>
+    </div>
+
 </body>
-
 </html>

@@ -413,9 +413,20 @@ const UIManager = {
         // Cart/Wishlist close buttons
         document.getElementById('closeCartBtn')?.addEventListener('click', this.toggleCart);
         document.getElementById('closeWishlistBtn')?.addEventListener('click', this.toggleWishlist);
+        document.getElementById('closeSearchBtn')?.addEventListener('click', this.toggleSearch);
+        document.getElementById('closeAccountBtn')?.addEventListener('click', this.toggleAccount);
+        document.getElementById('accountNewsletterLink')?.addEventListener('click', () => {
+            UIManager.toggleAccount();
+            const newsletterInput = document.querySelector('.newsletter-form input[type="email"], #newsletter-email');
+            newsletterInput?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => newsletterInput?.focus(), 400);
+        });
 
         // Overlay
         document.getElementById('overlay')?.addEventListener('click', this.closeAllModals);
+
+        // Search
+        this.setupSearch();
 
         // Scroll indicator
         document.getElementById('scrollIndicator')?.addEventListener('click', () => {
@@ -520,22 +531,85 @@ const UIManager = {
     },
 
     toggleSearch() {
-        // Implement search modal
-        NotificationManager.show('Search functionality coming soon!', 'info');
+        const searchModal = document.getElementById('searchModal');
+        if (!searchModal) {
+            NotificationManager.show('Search is available from the Shop page.', 'info');
+            return;
+        }
+        searchModal.classList.toggle('active');
+        document.getElementById('overlay')?.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+        if (searchModal.classList.contains('active')) {
+            const input = document.getElementById('globalSearchInput');
+            input.value = '';
+            document.getElementById('searchSuggestions').innerHTML = '';
+            setTimeout(() => input?.focus(), 100);
+        }
+    },
+
+    setupSearch() {
+        const input = document.getElementById('globalSearchInput');
+        const form = document.getElementById('globalSearchForm');
+        const suggestions = document.getElementById('searchSuggestions');
+        if (!input || !form || !suggestions) return;
+
+        const runSearch = Utils.debounce(() => {
+            const query = input.value.toLowerCase().trim();
+            if (query.length < 2 || typeof PRODUCTS === 'undefined') {
+                suggestions.innerHTML = '';
+                return;
+            }
+            const matches = PRODUCTS.filter(p =>
+                p.name.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query)
+            ).slice(0, 5);
+
+            if (matches.length === 0) {
+                suggestions.innerHTML = `<p class="search-no-results">No products match "${Utils.sanitizeInput(input.value)}".</p>`;
+                return;
+            }
+
+            suggestions.innerHTML = matches.map(p => `
+                <a class="search-suggestion" href="product-detail.html?product=${p.id}">
+                    <img src="${p.image}" alt="" loading="lazy">
+                    <span>
+                        <strong>${Utils.sanitizeInput(p.name)}</strong>
+                        <em>${Utils.formatCurrency(p.price)}</em>
+                    </span>
+                </a>
+            `).join('');
+        }, 200);
+
+        input.addEventListener('input', runSearch);
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = input.value.trim();
+            if (query) {
+                window.location.href = `shop.html?search=${encodeURIComponent(query)}`;
+            }
+        });
     },
 
     toggleAccount() {
-        // Implement account modal
-        NotificationManager.show('Account features coming soon!', 'info');
+        const accountModal = document.getElementById('accountModal');
+        if (!accountModal) {
+            NotificationManager.show('Accounts are coming soon!', 'info');
+            return;
+        }
+        accountModal.classList.toggle('active');
+        document.getElementById('overlay')?.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
     },
 
     closeAllModals() {
         const modals = [
             document.getElementById('cartDrawer'),
             document.getElementById('wishlistDrawer'),
+            document.getElementById('searchModal'),
+            document.getElementById('accountModal'),
             document.querySelector('.nav-links')
         ];
-        
+
         modals.forEach(modal => modal?.classList.remove('open', 'active'));
         document.getElementById('overlay')?.classList.remove('active');
         document.querySelector('.menu-toggle')?.classList.remove('active');
@@ -740,30 +814,34 @@ const UIManager = {
                         const img = entry.target;
                         if (img.dataset.src) {
                             img.src = img.dataset.src;
-                            img.classList.remove('lazy');
                         }
+                        img.classList.remove('lazy');
                         img.classList.add('loaded');
                         imageObserver.unobserve(img);
                     }
                 });
             }, { rootMargin: '50px' });
 
-            // Observe all images
+            // Observe all images - images that already finished loading
+            // (fast/cached loads racing ahead of this script) are marked
+            // loaded immediately instead of being silently stuck at opacity:0
             document.querySelectorAll('img').forEach(img => {
-                img.classList.add('lazy');
-                if (!img.complete) {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.classList.add('lazy');
                     imageObserver.observe(img);
                 }
             });
         }
-        
+
         // Preload critical images
         this.preloadCriticalImages();
     },
     
     preloadCriticalImages() {
         const criticalImages = [
-            'images/Hero.jpg',
+            'images/hero.jpg',
             'images/pic1.jpg',
             'images/pic2.jpg'
         ];
@@ -1020,6 +1098,309 @@ const BrowserCompatibility = {
     }
 };
 
+// Product Catalog for Shop page
+const PRODUCTS = [
+    { id: 'heritage-ndebele-bomber', name: 'Heritage Ndebele Bomber', price: 1499, category: 'heritage', image: 'images/lookbook-26.jpg', desc: 'Traditional print bomber celebrating Ndebele geometric pattern work.', badge: 'New' },
+    { id: 'kasi-windbreaker', name: 'Kasi Windbreaker Track Jacket', price: 1299, category: 'gold', image: 'images/lookbook-43.jpg', desc: 'Bold colour-blocked windbreaker built for the streets of Jozi.' },
+    { id: 'city-dreams-tee', name: 'City Dreams Graphic Tee', price: 549, category: 'city', image: 'images/hero-alt.jpg', desc: 'Everyday tee for the dreamers and hustlers of the City of Gold.' },
+    { id: 'amapantsula-track-pants', name: 'Amapantsula Track Pants', price: 799, category: 'city', image: 'images/lookbook-44.jpg', desc: 'Relaxed-fit track pants inspired by Kasi pantsula culture.' },
+    { id: 'umswenko-golfer', name: 'UMSWENKO Golfer Shirt', price: 649, category: 'heritage', image: 'images/product-teal-floral.jpg', desc: 'Smart-casual golfer with traditional trim detailing.' },
+    { id: 'braamfontein-duffel', name: 'Braamfontein Duffel Bag', price: 899, category: 'city', image: 'images/lookbook-38.jpg', desc: 'Weekend-ready duffel with heritage print panels.' },
+    { id: 'gold-rush-bomber', name: 'Gold Rush Satin Bomber', price: 1599, category: 'gold', image: 'images/lookbook-40.jpg', desc: 'Limited edition satin bomber inspired by Johannesburg’s golden legacy.', badge: 'Limited' },
+    { id: 'traditional-wrap-dress', name: 'Traditional Print Wrap Dress', price: 1099, category: 'heritage', image: 'images/lookbook-42.jpg', desc: 'Flowing wrap dress in indigenous South African print fabric.' },
+    { id: 'jozi-fanny-pack', name: 'Jozi Fanny Pack', price: 399, category: 'city', image: 'images/lookbook-09.jpg', desc: 'Compact crossbody fanny pack for city runs.' },
+    { id: 'township-jumpsuit', name: 'Township Trends Jumpsuit', price: 1199, category: 'heritage', image: 'images/lookbook-10.jpg', desc: 'One-piece jumpsuit fusing Kasi tailoring with heritage cloth.' },
+    { id: 'hustle-travel-bag', name: 'Hustle Culture Travel Bag', price: 1099, category: 'gold', image: 'images/lookbook-11.jpg', desc: 'Durable travel bag for the ambitious and always-on-the-move.' },
+    { id: 'izikhothane-tracksuit', name: 'Izikhothane Track Suit', price: 1799, category: 'gold', image: 'images/lookbook-41.jpg', desc: 'Statement tracksuit celebrating izikhothane street sub-culture flair.', badge: 'Limited' },
+    { id: 'sepedi-heritage-shirt', name: 'Sepedi Heritage Shirt', price: 699, category: 'heritage', image: 'images/hero.jpg', desc: 'Button-up shirt drawing on Sepedi pattern traditions.' },
+    { id: 'city-lights-backpack', name: 'City Lights Backpack', price: 949, category: 'city', image: 'images/product-friends-bags.jpg', desc: 'Everyday backpack with reflective city-lights trim.' },
+    { id: 'gold-standard-cap', name: 'Gold Standard Cap', price: 349, category: 'gold', image: 'images/collection-gold.jpg', desc: 'Embroidered cap finishing off any UMSWENKO fit.' }
+];
+
+const ShopCatalog = {
+    state: {
+        search: '',
+        category: 'all',
+        price: 'all',
+        sort: 'featured',
+        visibleCount: 6
+    },
+
+    init() {
+        this.grid = document.getElementById('productsGrid');
+        if (!this.grid) return;
+
+        this.searchInput = document.getElementById('searchInput');
+        this.categoryPills = document.querySelectorAll('.category-pill');
+        this.priceFilter = document.getElementById('priceFilter');
+        this.sortFilter = document.getElementById('sortFilter');
+        this.loadMoreBtn = document.getElementById('loadMoreBtn');
+
+        const params = new URLSearchParams(window.location.search);
+        const collectionParam = params.get('collection');
+        if (collectionParam && ['heritage', 'city', 'gold'].includes(collectionParam)) {
+            this.state.category = collectionParam;
+        }
+        const searchParam = params.get('search');
+        if (searchParam) {
+            this.state.search = searchParam.toLowerCase().trim();
+            if (this.searchInput) this.searchInput.value = searchParam;
+        }
+        this.categoryPills.forEach(pill => {
+            pill.classList.toggle('active', pill.dataset.category === this.state.category);
+            pill.setAttribute('aria-selected', pill.dataset.category === this.state.category ? 'true' : 'false');
+        });
+
+        this.searchInput?.addEventListener('input', Utils.debounce((e) => {
+            this.state.search = e.target.value.toLowerCase().trim();
+            this.state.visibleCount = 6;
+            this.render();
+        }, 250));
+
+        this.categoryPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                this.state.category = pill.dataset.category;
+                this.state.visibleCount = 6;
+                this.categoryPills.forEach(p => {
+                    p.classList.toggle('active', p === pill);
+                    p.setAttribute('aria-selected', p === pill ? 'true' : 'false');
+                });
+                this.render();
+            });
+        });
+
+        this.priceFilter?.addEventListener('change', (e) => {
+            this.state.price = e.target.value;
+            this.state.visibleCount = 6;
+            this.render();
+        });
+
+        this.sortFilter?.addEventListener('change', (e) => {
+            this.state.sort = e.target.value;
+            this.render();
+        });
+
+        this.loadMoreBtn?.addEventListener('click', () => {
+            this.state.visibleCount += 6;
+            this.render();
+        });
+
+        this.render();
+    },
+
+    getFiltered() {
+        let items = PRODUCTS.filter(p => {
+            if (this.state.category !== 'all' && p.category !== this.state.category) return false;
+            if (this.state.search && !p.name.toLowerCase().includes(this.state.search) && !p.desc.toLowerCase().includes(this.state.search)) return false;
+            if (this.state.price !== 'all') {
+                if (this.state.price.endsWith('+')) {
+                    const minVal = parseInt(this.state.price);
+                    if (p.price < minVal) return false;
+                } else {
+                    const [minVal, maxVal] = this.state.price.split('-').map(Number);
+                    if (p.price < minVal || p.price > maxVal) return false;
+                }
+            }
+            return true;
+        });
+
+        switch (this.state.sort) {
+            case 'price-low': items.sort((a, b) => a.price - b.price); break;
+            case 'price-high': items.sort((a, b) => b.price - a.price); break;
+            case 'newest': items = items.slice().reverse(); break;
+            default: break;
+        }
+
+        return items;
+    },
+
+    render() {
+        const items = this.getFiltered();
+        const visible = items.slice(0, this.state.visibleCount);
+
+        if (visible.length === 0) {
+            this.grid.innerHTML = `<p class="no-products" style="grid-column: 1/-1; text-align:center; padding: 3rem 1rem; color: var(--text-gray);">No products match your search. Try a different filter.</p>`;
+        } else {
+            this.grid.innerHTML = visible.map(p => this.cardHTML(p)).join('');
+        }
+
+        if (this.loadMoreBtn) {
+            this.loadMoreBtn.style.display = this.state.visibleCount < items.length ? 'inline-flex' : 'none';
+        }
+    },
+
+    cardHTML(p) {
+        return `
+            <article class="product-card" data-collection="${p.category}" data-product-id="${p.id}">
+                <div class="product-image">
+                    <img src="${p.image}" alt="${Utils.sanitizeInput(p.name)} - ${Utils.sanitizeInput(p.desc)}" loading="lazy">
+                    ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
+                    <button class="wishlist-btn" aria-label="Add to wishlist" data-product="${p.id}">
+                        <i class="fas fa-heart" aria-hidden="true"></i>
+                    </button>
+                    <span class="quick-view" role="button" tabindex="0" aria-label="Quick view ${Utils.sanitizeInput(p.name)}">Quick View</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">${Utils.sanitizeInput(p.name)}</h3>
+                    <p class="product-price">${Utils.formatCurrency(p.price)}</p>
+                    <div class="product-actions">
+                        <label for="size-${p.id}" class="sr-only">Select size for ${Utils.sanitizeInput(p.name)}</label>
+                        <select class="size-selector" id="size-${p.id}" autocomplete="off">
+                            <option value="S">Small</option>
+                            <option value="M" selected>Medium</option>
+                            <option value="L">Large</option>
+                            <option value="XL">Extra Large</option>
+                        </select>
+                        <button class="add-to-cart" data-product="${p.id}" data-name="${Utils.sanitizeInput(p.name)}" data-price="${p.price}">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+        `;
+    }
+};
+
+const PRODUCT_FEATURES = [
+    'Premium quality streetwear fabric',
+    'Part of the UMSWENKO collection',
+    'Designed in Johannesburg, South Africa',
+    'True to size regular fit'
+];
+
+const ProductDetail = {
+    init() {
+        this.layout = document.getElementById('productDetailLayout');
+        if (!this.layout) return;
+
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get('product');
+        const product = PRODUCTS.find(p => p.id === productId);
+
+        if (!product) {
+            this.layout.innerHTML = `
+                <div class="pd-not-found">
+                    <h1>Product Not Found</h1>
+                    <p>We couldn't find the product you were looking for. It may have sold out or the link may be incorrect.</p>
+                    <a href="shop.html" class="cta-button">Back to Shop</a>
+                </div>
+            `;
+            return;
+        }
+
+        this.product = product;
+        this.selectedSize = 'M';
+        this.quantity = 1;
+
+        document.title = `${product.name} - I RUN JHB | Premium South African Streetwear`;
+        const breadcrumb = document.getElementById('pdBreadcrumbName');
+        if (breadcrumb) breadcrumb.textContent = product.name;
+        const pageTitle = document.getElementById('pdPageTitle');
+        if (pageTitle) pageTitle.textContent = document.title;
+
+        this.layout.innerHTML = `
+            <div class="pd-images">
+                <img src="${product.image}" alt="${Utils.sanitizeInput(product.name)} - ${Utils.sanitizeInput(product.desc)}" id="pdMainImage">
+                ${product.badge ? `<span class="pd-badge">${product.badge}</span>` : ''}
+            </div>
+            <div class="pd-info">
+                <span class="pd-category">${this.categoryLabel(product.category)}</span>
+                <h1>${Utils.sanitizeInput(product.name)}</h1>
+                <p class="pd-price">${Utils.formatCurrency(product.price)}</p>
+                <p class="pd-desc">${Utils.sanitizeInput(product.desc)}</p>
+
+                <div class="pd-option-group">
+                    <label for="pdSize">Size</label>
+                    <select class="size-selector" id="pdSize">
+                        <option value="S">Small</option>
+                        <option value="M" selected>Medium</option>
+                        <option value="L">Large</option>
+                        <option value="XL">Extra Large</option>
+                    </select>
+                </div>
+
+                <div class="pd-option-group">
+                    <label>Quantity</label>
+                    <div class="quantity-controls">
+                        <button type="button" id="pdQtyMinus" aria-label="Decrease quantity">-</button>
+                        <span id="pdQty">1</span>
+                        <button type="button" id="pdQtyPlus" aria-label="Increase quantity">+</button>
+                    </div>
+                </div>
+
+                <div class="pd-actions">
+                    <button class="pd-add-to-cart" id="pdAddToCart">Add to Cart</button>
+                    <button class="pd-wishlist-btn" id="pdWishlistBtn" aria-label="Add to wishlist">
+                        <i class="fas fa-heart" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <ul class="pd-features">
+                    ${PRODUCT_FEATURES.map(f => `<li><i class="fas fa-check" aria-hidden="true"></i> ${f}</li>`).join('')}
+                </ul>
+            </div>
+        `;
+
+        document.getElementById('pdSize')?.addEventListener('change', (e) => {
+            this.selectedSize = e.target.value;
+        });
+        document.getElementById('pdQtyMinus')?.addEventListener('click', () => {
+            if (this.quantity > 1) {
+                this.quantity--;
+                document.getElementById('pdQty').textContent = this.quantity;
+            }
+        });
+        document.getElementById('pdQtyPlus')?.addEventListener('click', () => {
+            this.quantity++;
+            document.getElementById('pdQty').textContent = this.quantity;
+        });
+        document.getElementById('pdAddToCart')?.addEventListener('click', () => {
+            for (let i = 0; i < this.quantity; i++) {
+                CartManager.add({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    size: this.selectedSize,
+                    image: product.image,
+                    category: product.category
+                });
+            }
+        });
+        const wishlistBtn = document.getElementById('pdWishlistBtn');
+        const syncWishlistBtn = () => {
+            const inWishlist = AppState.wishlist.some(item => item.id === product.id);
+            wishlistBtn?.classList.toggle('active', inWishlist);
+        };
+        syncWishlistBtn();
+        wishlistBtn?.addEventListener('click', () => {
+            WishlistManager.toggle({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                category: product.category
+            });
+            syncWishlistBtn();
+        });
+
+        this.renderAlsoLike(product);
+    },
+
+    categoryLabel(category) {
+        return { heritage: 'Heritage', city: 'City Dreams', gold: 'Gold Rush' }[category] || category;
+    },
+
+    renderAlsoLike(product) {
+        const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+        if (related.length === 0) return;
+        const grid = document.getElementById('alsoLikeGrid');
+        const section = document.getElementById('alsoLike');
+        if (!grid || !section) return;
+        grid.innerHTML = related.map(p => ShopCatalog.cardHTML(p)).join('');
+        section.style.display = 'block';
+    }
+};
+
 // Initialize application
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize mobile and browser optimizations first
@@ -1031,6 +1412,8 @@ document.addEventListener('DOMContentLoaded', () => {
     WishlistManager.updateUI();
     UIManager.init();
     PerformanceMonitor.init();
+    ShopCatalog.init();
+    ProductDetail.init();
 
     // Add scroll animations to elements with stagger effect
     document.querySelectorAll('.collection-card, .product-card, .pillar, .testimonial-card, .achievement-card').forEach((el, index) => {
