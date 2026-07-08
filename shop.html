@@ -71,6 +71,14 @@
 
         <section class="shop-content">
             <div class="container">
+                <!-- Category Pills -->
+                <div class="category-pills" id="categoryPills" role="tablist" aria-label="Filter by category">
+                    <button class="category-pill active" data-category="all" role="tab" aria-selected="true">All</button>
+                    <button class="category-pill" data-category="heritage" role="tab" aria-selected="false">Heritage</button>
+                    <button class="category-pill" data-category="city" role="tab" aria-selected="false">City Dreams</button>
+                    <button class="category-pill" data-category="gold" role="tab" aria-selected="false">Gold Rush</button>
+                </div>
+
                 <!-- Search and Filter Bar -->
                 <div class="shop-controls">
                     <div class="search-container">
@@ -80,14 +88,6 @@
                     </div>
                     
                     <div class="filter-controls">
-                        <label for="categoryFilter" class="sr-only">Filter by category</label>
-                        <select class="filter-select" id="categoryFilter">
-                            <option value="all">All Categories</option>
-                            <option value="heritage">Heritage</option>
-                            <option value="city">City Dreams</option>
-                            <option value="gold">Gold Rush</option>
-                        </select>
-                        
                         <label for="priceFilter" class="sr-only">Filter by price</label>
                         <select class="filter-select" id="priceFilter">
                             <option value="all">All Prices</option>

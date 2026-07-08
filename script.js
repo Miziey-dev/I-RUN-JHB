@@ -1057,7 +1057,7 @@ const ShopCatalog = {
         if (!this.grid) return;
 
         this.searchInput = document.getElementById('searchInput');
-        this.categoryFilter = document.getElementById('categoryFilter');
+        this.categoryPills = document.querySelectorAll('.category-pill');
         this.priceFilter = document.getElementById('priceFilter');
         this.sortFilter = document.getElementById('sortFilter');
         this.loadMoreBtn = document.getElementById('loadMoreBtn');
@@ -1066,8 +1066,11 @@ const ShopCatalog = {
         const collectionParam = params.get('collection');
         if (collectionParam && ['heritage', 'city', 'gold'].includes(collectionParam)) {
             this.state.category = collectionParam;
-            if (this.categoryFilter) this.categoryFilter.value = collectionParam;
         }
+        this.categoryPills.forEach(pill => {
+            pill.classList.toggle('active', pill.dataset.category === this.state.category);
+            pill.setAttribute('aria-selected', pill.dataset.category === this.state.category ? 'true' : 'false');
+        });
 
         this.searchInput?.addEventListener('input', Utils.debounce((e) => {
             this.state.search = e.target.value.toLowerCase().trim();
@@ -1075,10 +1078,16 @@ const ShopCatalog = {
             this.render();
         }, 250));
 
-        this.categoryFilter?.addEventListener('change', (e) => {
-            this.state.category = e.target.value;
-            this.state.visibleCount = 6;
-            this.render();
+        this.categoryPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                this.state.category = pill.dataset.category;
+                this.state.visibleCount = 6;
+                this.categoryPills.forEach(p => {
+                    p.classList.toggle('active', p === pill);
+                    p.setAttribute('aria-selected', p === pill ? 'true' : 'false');
+                });
+                this.render();
+            });
         });
 
         this.priceFilter?.addEventListener('change', (e) => {
@@ -1166,10 +1175,6 @@ const ShopCatalog = {
                         <button class="add-to-cart" data-product="${p.id}" data-name="${Utils.sanitizeInput(p.name)}" data-price="${p.price}">
                             Add to Cart
                         </button>
-                    </div>
-                    <div class="product-trust">
-                        <span><i class="fas fa-shield-alt"></i> Secure Payment</span>
-                        <span><i class="fas fa-undo"></i> 30-Day Returns</span>
                     </div>
                 </div>
             </article>

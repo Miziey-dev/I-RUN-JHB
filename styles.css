@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz@0,9..144;1,9..144&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz@0,9..144;1,9..144&family=Petit+Formal+Script&display=swap');
 
 /* Heritage triangle divider - original geometric pattern, not a stock asset */
 .pattern-divider {
@@ -12,6 +12,7 @@
 :root {
     --font-display: 'Anton', 'Archivo Black', Impact, sans-serif;
     --font-serif: 'Fraunces', Georgia, serif;
+    --font-script: 'Petit Formal Script', cursive;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --primary-black: #15130f;
     --warm-white: #faf6ef;
@@ -22,6 +23,7 @@
     --transition: all 0.3s ease;
     --shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     --border-radius: 8px;
+    --radius-pill: 999px;
     --max-width: 1400px;
 
     /* UMSWENKO Accent Palette - drawn from real I RUN JHB campaign colourways */
@@ -554,6 +556,18 @@ body {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
+.script-accent {
+    font-family: var(--font-script);
+    text-transform: none;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    font-size: 1.6em;
+    color: var(--warm-white);
+    vertical-align: -0.08em;
+    display: inline-block;
+    padding: 0 0.05em;
+}
+
 .hero-description {
     font-size: clamp(0.9rem, 3vw, 1.1rem);
     margin-bottom: 2.5rem;
@@ -573,7 +587,7 @@ body {
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-pill);
     transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     font-size: clamp(0.9rem, 2.5vw, 1rem);
     box-shadow: 0 4px 20px rgba(224, 167, 46, 0.35);
@@ -811,7 +825,7 @@ body {
     letter-spacing: 1px;
     text-transform: uppercase;
     cursor: pointer;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-pill);
 }
 
 .filter-btn.active {
@@ -826,22 +840,29 @@ body {
 }
 
 .product-card {
-    background: white;
+    background: transparent;
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: var(--shadow);
+    box-shadow: none;
 }
 
 .product-image {
     position: relative;
     height: 300px;
     overflow: hidden;
+    border-radius: var(--border-radius);
+    background: var(--border-gray);
 }
 
 .product-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.04);
 }
 
 .wishlist-btn {
@@ -866,8 +887,8 @@ body {
     transform: translateX(-50%);
     background: rgba(255, 255, 255, 0.9);
     color: var(--primary-black);
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--radius-pill);
     font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -880,19 +901,21 @@ body {
 }
 
 .product-info {
-    padding: 1.5rem;
+    padding: 1.25rem 0.25rem;
 }
 
 .product-name {
-    font-size: 1.2rem;
+    font-size: 0.95rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
 }
 
 .product-price {
-    color: var(--gold-accent);
-    font-size: 1.3rem;
-    font-weight: 700;
+    color: var(--primary-black);
+    font-size: 1rem;
+    font-weight: 600;
     margin-bottom: 1rem;
 }
 
@@ -902,27 +925,11 @@ body {
     gap: 0.5rem;
 }
 
-.product-trust {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: var(--space-sm);
-    padding-top: var(--space-sm);
-    border-top: 1px solid var(--border-gray);
-    font-size: var(--font-size-xs);
-    color: var(--text-gray);
-}
-
-.product-trust i {
-    color: var(--gold-accent);
-    margin-right: 2px;
-}
-
 .size-selector {
     width: 100%;
-    padding: 0.8rem;
+    padding: 0.8rem 1.1rem;
     border: 2px solid var(--border-gray);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-pill);
     background: white;
     cursor: pointer;
 }
@@ -936,7 +943,7 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     cursor: pointer;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-pill);
 }
 
 .add-to-cart:hover {
@@ -1168,19 +1175,19 @@ body {
 
 .newsletter-form input {
     flex: 1;
-    padding: 0.8rem;
+    padding: 0.8rem 1.25rem;
     border: 1px solid #444;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-pill);
     background: rgba(255, 255, 255, 0.1);
     color: white;
 }
 
 .newsletter-form button {
     background: var(--gold-accent);
-    color: white;
+    color: var(--primary-black);
     border: none;
     padding: 0.8rem 1.5rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-pill);
     cursor: pointer;
     font-weight: 600;
     text-transform: uppercase;
@@ -3274,7 +3281,7 @@ textarea:focus {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-pill);
     transition: var(--transition);
     border: 2px solid transparent;
 }
@@ -4311,10 +4318,49 @@ textarea:focus {
     flex-wrap: wrap;
 }
 
+.category-pills {
+    display: flex;
+    gap: 0.6rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.category-pills::-webkit-scrollbar {
+    display: none;
+}
+
+.category-pill {
+    flex-shrink: 0;
+    background: transparent;
+    border: 2px solid var(--primary-black);
+    color: var(--primary-black);
+    padding: 0.7rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: var(--radius-pill);
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.category-pill:hover {
+    background: rgba(21, 19, 15, 0.06);
+}
+
+.category-pill.active {
+    background: var(--primary-black);
+    color: var(--warm-white);
+}
+
 .filter-select {
-    padding: 0.8rem 1rem;
+    padding: 0.8rem 1.25rem;
     border: 2px solid var(--border-gray);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-pill);
     background: white;
     font-size: 0.9rem;
     cursor: pointer;
@@ -4366,11 +4412,11 @@ textarea:focus {
     background: var(--primary-black);
     color: white;
     border: none;
-    padding: 1rem 2rem;
+    padding: 1rem 2.5rem;
     font-weight: 600;
     text-transform: uppercase;
     cursor: pointer;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-pill);
 }
 
 .load-more-btn:hover {
