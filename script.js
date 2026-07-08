@@ -393,6 +393,48 @@ const WishlistManager = {
 
 // UI Management
 const UIManager = {
+    lastFocusedTrigger: null,
+
+    rememberFocus() {
+        this.lastFocusedTrigger = document.activeElement;
+    },
+
+    restoreFocus() {
+        if (this.lastFocusedTrigger && typeof this.lastFocusedTrigger.focus === 'function') {
+            this.lastFocusedTrigger.focus();
+        }
+        this.lastFocusedTrigger = null;
+    },
+
+    getActiveModal() {
+        const candidates = [
+            document.getElementById('cartDrawer'),
+            document.getElementById('wishlistDrawer'),
+            document.getElementById('searchModal'),
+            document.getElementById('accountModal')
+        ];
+        return candidates.find(el => el && (el.classList.contains('open') || el.classList.contains('active'))) || null;
+    },
+
+    trapFocusInModal(e) {
+        if (e.key !== 'Tab') return;
+        const modal = UIManager.getActiveModal();
+        if (!modal) return;
+
+        const focusable = modal.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
+    },
+
     init() {
         this.setupEventListeners();
         this.setupScrollAnimations();
@@ -507,26 +549,38 @@ const UIManager = {
     toggleCart() {
         const cartDrawer = document.getElementById('cartDrawer');
         const overlay = document.getElementById('overlay');
-        
+        const opening = !cartDrawer?.classList.contains('open');
+
+        if (opening) UIManager.rememberFocus();
         cartDrawer?.classList.toggle('open');
+        cartDrawer?.setAttribute('aria-hidden', String(!opening));
         overlay?.classList.toggle('active');
         document.body.classList.toggle('no-scroll');
-        
-        if (cartDrawer?.classList.contains('open')) {
+
+        if (opening) {
             CartManager.renderCartItems();
+            setTimeout(() => document.getElementById('closeCartBtn')?.focus(), 100);
+        } else {
+            UIManager.restoreFocus();
         }
     },
 
     toggleWishlist() {
         const wishlistDrawer = document.getElementById('wishlistDrawer');
         const overlay = document.getElementById('overlay');
-        
+        const opening = !wishlistDrawer?.classList.contains('open');
+
+        if (opening) UIManager.rememberFocus();
         wishlistDrawer?.classList.toggle('open');
+        wishlistDrawer?.setAttribute('aria-hidden', String(!opening));
         overlay?.classList.toggle('active');
         document.body.classList.toggle('no-scroll');
-        
-        if (wishlistDrawer?.classList.contains('open')) {
+
+        if (opening) {
             WishlistManager.renderWishlistItems();
+            setTimeout(() => document.getElementById('closeWishlistBtn')?.focus(), 100);
+        } else {
+            UIManager.restoreFocus();
         }
     },
 
@@ -536,14 +590,20 @@ const UIManager = {
             NotificationManager.show('Search is available from the Shop page.', 'info');
             return;
         }
+        const opening = !searchModal.classList.contains('active');
+
+        if (opening) UIManager.rememberFocus();
         searchModal.classList.toggle('active');
+        searchModal.setAttribute('aria-hidden', String(!opening));
         document.getElementById('overlay')?.classList.toggle('active');
         document.body.classList.toggle('no-scroll');
-        if (searchModal.classList.contains('active')) {
+        if (opening) {
             const input = document.getElementById('globalSearchInput');
             input.value = '';
             document.getElementById('searchSuggestions').innerHTML = '';
             setTimeout(() => input?.focus(), 100);
+        } else {
+            UIManager.restoreFocus();
         }
     },
 
@@ -596,12 +656,23 @@ const UIManager = {
             NotificationManager.show('Accounts are coming soon!', 'info');
             return;
         }
+        const opening = !accountModal.classList.contains('active');
+
+        if (opening) UIManager.rememberFocus();
         accountModal.classList.toggle('active');
+        accountModal.setAttribute('aria-hidden', String(!opening));
         document.getElementById('overlay')?.classList.toggle('active');
         document.body.classList.toggle('no-scroll');
+
+        if (opening) {
+            setTimeout(() => document.getElementById('closeAccountBtn')?.focus(), 100);
+        } else {
+            UIManager.restoreFocus();
+        }
     },
 
     closeAllModals() {
+        const hadOpenModal = !!UIManager.getActiveModal();
         const modals = [
             document.getElementById('cartDrawer'),
             document.getElementById('wishlistDrawer'),
@@ -610,10 +681,14 @@ const UIManager = {
             document.querySelector('.nav-links')
         ];
 
-        modals.forEach(modal => modal?.classList.remove('open', 'active'));
+        modals.forEach(modal => {
+            modal?.classList.remove('open', 'active');
+            if (modal?.hasAttribute('role')) modal.setAttribute('aria-hidden', 'true');
+        });
         document.getElementById('overlay')?.classList.remove('active');
         document.querySelector('.menu-toggle')?.classList.remove('active');
         document.body.classList.remove('no-scroll');
+        if (hadOpenModal) UIManager.restoreFocus();
     },
 
     setupScrollAnimations() {
@@ -730,33 +805,52 @@ const UIManager = {
         }
     },
 
+    // NOTE: This site has no backend, so there is nowhere to POST this form to.
+    // As a working stopgap, we open the visitor's email client with the message
+    // pre-filled via a mailto: link. Once a real backend/form service (e.g.
+    // Formspree, Netlify Forms) is wired up, replace this with a real fetch().
     handleContactForm(formData) {
         const responseElement = document.getElementById('formResponse');
-        
-        // Show loading state
         const submitBtn = document.querySelector('.submit-btn');
         const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
+        submitBtn.textContent = 'Opening your email app...';
         submitBtn.disabled = true;
 
-        // Simulate form submission (replace with actual endpoint)
+        const CONTACT_EMAIL = 'irunjozi@gmail.com';
+        const firstName = formData.get('firstName') || '';
+        const lastName = formData.get('lastName') || '';
+        const email = formData.get('email') || '';
+        const phone = formData.get('phone') || '';
+        const inquiryType = formData.get('inquiryType') || '';
+        const subject = formData.get('subject') || 'Website inquiry';
+        const message = formData.get('message') || '';
+
+        const body = [
+            `Name: ${firstName} ${lastName}`,
+            `Email: ${email}`,
+            phone ? `Phone: ${phone}` : null,
+            inquiryType ? `Inquiry type: ${inquiryType}` : null,
+            '',
+            message
+        ].filter(Boolean).join('\n');
+
+        const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
         setTimeout(() => {
-            // Reset button
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
 
-            // Show success message
+            window.location.href = mailtoUrl;
+
             if (responseElement) {
                 responseElement.className = 'form-response success';
-                responseElement.textContent = 'Thank you for your message! We\'ll get back to you soon.';
+                responseElement.textContent = `Your email app should now be open with this message ready to send to ${CONTACT_EMAIL}. If nothing opened, email us directly.`;
                 responseElement.style.display = 'block';
             }
 
-            NotificationManager.show('Message sent successfully!', 'success');
-            
-            // Reset form
+            NotificationManager.show('Opening your email app to send this message...', 'info');
             document.getElementById('contactForm').reset();
-        }, 2000);
+        }, 600);
     },
 
     handleNewsletterForm(formData) {
@@ -885,6 +979,11 @@ const UIManager = {
         // Escape key closes modals
         if (e.key === 'Escape') {
             UIManager.closeAllModals();
+        }
+
+        // Trap focus inside whichever drawer/modal is open
+        if (e.key === 'Tab') {
+            UIManager.trapFocusInModal(e);
         }
 
         // Enter key on buttons

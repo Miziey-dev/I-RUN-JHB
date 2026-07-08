@@ -8,7 +8,11 @@
     <title id="pdPageTitle">Product - I RUN JHB | Premium South African Streetwear</title>
     <link rel="canonical" href="https://www.irunjhb.com/product-detail.html">
     <meta property="og:title" content="I RUN JHB - Premium South African Streetwear">
+    <meta property="og:description" content="Shop premium South African streetwear from I RUN JHB's UMSWENKO collection.">
+    <meta property="og:image" content="https://www.irunjhb.com/images/hero.jpg">
+    <meta property="og:url" content="https://www.irunjhb.com/product-detail.html">
     <meta property="og:type" content="product">
+    <meta property="og:site_name" content="I RUN JHB">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="stylesheet" href="styles.css">
@@ -74,7 +78,7 @@
     </main>
 
     <!-- Cart Drawer -->
-    <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Shopping cart" aria-hidden="true">
         <div class="cart-header">
             <h3>Shopping Cart <span id="cart-count-drawer">(0)</span></h3>
             <button class="close-cart" aria-label="Close cart" id="closeCartBtn">&times;</button>
@@ -105,7 +109,7 @@
     </div>
 
     <!-- Wishlist Drawer -->
-    <div class="wishlist-drawer" id="wishlistDrawer">
+    <div class="wishlist-drawer" id="wishlistDrawer" role="dialog" aria-modal="true" aria-label="Wishlist" aria-hidden="true">
         <div class="wishlist-header">
             <h3>Wishlist</h3>
             <button class="close-wishlist" aria-label="Close wishlist" id="closeWishlistBtn">&times;</button>
@@ -181,7 +185,7 @@
     <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
     <!-- Search Modal -->
-    <div class="search-modal" id="searchModal">
+    <div class="search-modal" id="searchModal" role="dialog" aria-modal="true" aria-label="Search products" aria-hidden="true">
         <div class="search-modal-inner">
             <button class="close-search" id="closeSearchBtn" aria-label="Close search">&times;</button>
             <form id="globalSearchForm" role="search" autocomplete="off">
@@ -194,7 +198,7 @@
     </div>
 
     <!-- Account Modal -->
-    <div class="account-modal" id="accountModal">
+    <div class="account-modal" id="accountModal" role="dialog" aria-modal="true" aria-label="Account" aria-hidden="true">
         <div class="account-modal-inner">
             <button class="close-account" id="closeAccountBtn" aria-label="Close">&times;</button>
             <img src="images/logo-runner.png" alt="" class="account-modal-icon">
