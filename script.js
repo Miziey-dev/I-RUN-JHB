@@ -1100,18 +1100,18 @@ const BrowserCompatibility = {
 
 // Product Catalog for Shop page
 const PRODUCTS = [
-    { id: 'heritage-ndebele-bomber', name: 'Heritage Ndebele Bomber', price: 1499, category: 'heritage', image: 'images/collection-heritage.jpg', desc: 'Traditional print bomber celebrating Ndebele geometric pattern work.', badge: 'New' },
-    { id: 'kasi-windbreaker', name: 'Kasi Windbreaker Track Jacket', price: 1299, category: 'gold', image: 'images/lookbook-09.jpg', desc: 'Bold colour-blocked windbreaker built for the streets of Jozi.' },
+    { id: 'heritage-ndebele-bomber', name: 'Heritage Ndebele Bomber', price: 1499, category: 'heritage', image: 'images/lookbook-26.jpg', desc: 'Traditional print bomber celebrating Ndebele geometric pattern work.', badge: 'New' },
+    { id: 'kasi-windbreaker', name: 'Kasi Windbreaker Track Jacket', price: 1299, category: 'gold', image: 'images/lookbook-43.jpg', desc: 'Bold colour-blocked windbreaker built for the streets of Jozi.' },
     { id: 'city-dreams-tee', name: 'City Dreams Graphic Tee', price: 549, category: 'city', image: 'images/hero-alt.jpg', desc: 'Everyday tee for the dreamers and hustlers of the City of Gold.' },
-    { id: 'amapantsula-track-pants', name: 'Amapantsula Track Pants', price: 799, category: 'city', image: 'images/product-green-set.jpg', desc: 'Relaxed-fit track pants inspired by Kasi pantsula culture.' },
+    { id: 'amapantsula-track-pants', name: 'Amapantsula Track Pants', price: 799, category: 'city', image: 'images/lookbook-44.jpg', desc: 'Relaxed-fit track pants inspired by Kasi pantsula culture.' },
     { id: 'umswenko-golfer', name: 'UMSWENKO Golfer Shirt', price: 649, category: 'heritage', image: 'images/product-teal-floral.jpg', desc: 'Smart-casual golfer with traditional trim detailing.' },
-    { id: 'braamfontein-duffel', name: 'Braamfontein Duffel Bag', price: 899, category: 'city', image: 'images/product-friends-bags.jpg', desc: 'Weekend-ready duffel with heritage print panels.' },
-    { id: 'gold-rush-bomber', name: 'Gold Rush Satin Bomber', price: 1599, category: 'gold', image: 'images/collection-gold.jpg', desc: 'Limited edition satin bomber inspired by Johannesburg’s golden legacy.', badge: 'Limited' },
-    { id: 'traditional-wrap-dress', name: 'Traditional Print Wrap Dress', price: 1099, category: 'heritage', image: 'images/collection-heritage.jpg', desc: 'Flowing wrap dress in indigenous South African print fabric.' },
+    { id: 'braamfontein-duffel', name: 'Braamfontein Duffel Bag', price: 899, category: 'city', image: 'images/lookbook-38.jpg', desc: 'Weekend-ready duffel with heritage print panels.' },
+    { id: 'gold-rush-bomber', name: 'Gold Rush Satin Bomber', price: 1599, category: 'gold', image: 'images/lookbook-40.jpg', desc: 'Limited edition satin bomber inspired by Johannesburg’s golden legacy.', badge: 'Limited' },
+    { id: 'traditional-wrap-dress', name: 'Traditional Print Wrap Dress', price: 1099, category: 'heritage', image: 'images/lookbook-42.jpg', desc: 'Flowing wrap dress in indigenous South African print fabric.' },
     { id: 'jozi-fanny-pack', name: 'Jozi Fanny Pack', price: 399, category: 'city', image: 'images/lookbook-09.jpg', desc: 'Compact crossbody fanny pack for city runs.' },
     { id: 'township-jumpsuit', name: 'Township Trends Jumpsuit', price: 1199, category: 'heritage', image: 'images/lookbook-10.jpg', desc: 'One-piece jumpsuit fusing Kasi tailoring with heritage cloth.' },
     { id: 'hustle-travel-bag', name: 'Hustle Culture Travel Bag', price: 1099, category: 'gold', image: 'images/lookbook-11.jpg', desc: 'Durable travel bag for the ambitious and always-on-the-move.' },
-    { id: 'izikhothane-tracksuit', name: 'Izikhothane Track Suit', price: 1799, category: 'gold', image: 'images/lookbook-12.jpg', desc: 'Statement tracksuit celebrating izikhothane street sub-culture flair.', badge: 'Limited' },
+    { id: 'izikhothane-tracksuit', name: 'Izikhothane Track Suit', price: 1799, category: 'gold', image: 'images/lookbook-41.jpg', desc: 'Statement tracksuit celebrating izikhothane street sub-culture flair.', badge: 'Limited' },
     { id: 'sepedi-heritage-shirt', name: 'Sepedi Heritage Shirt', price: 699, category: 'heritage', image: 'images/hero.jpg', desc: 'Button-up shirt drawing on Sepedi pattern traditions.' },
     { id: 'city-lights-backpack', name: 'City Lights Backpack', price: 949, category: 'city', image: 'images/product-friends-bags.jpg', desc: 'Everyday backpack with reflective city-lights trim.' },
     { id: 'gold-standard-cap', name: 'Gold Standard Cap', price: 349, category: 'gold', image: 'images/collection-gold.jpg', desc: 'Embroidered cap finishing off any UMSWENKO fit.' }
